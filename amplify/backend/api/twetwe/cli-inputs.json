@@ -3,7 +3,7 @@
   "serviceConfiguration": {
     "apiName": "twetwe",
     "serviceName": "AppSync",
-    "gqlSchemaPath": "/tmp/amplify-78c98554-d414-412d-b395-edf9321c4176/amplify/backend/api/twetwe/schema.graphql",
+    "gqlSchemaPath": "/tmp/amplify-7f6c11a8-9b2a-45a5-9d16-3ac90f5e0349/amplify/backend/api/twetwe/schema.graphql",
     "defaultAuthType": {
       "mode": "API_KEY",
       "keyDescription": "api key description",

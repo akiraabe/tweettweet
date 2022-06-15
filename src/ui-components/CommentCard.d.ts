@@ -6,11 +6,12 @@
 
 import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { Post, User } from "../models";
+import { Block, Post, User } from "../models";
 import { FlexProps } from "@aws-amplify/ui-react";
 export declare type CommentCardProps = React.PropsWithChildren<Partial<FlexProps> & {
     post?: Post;
     user?: User;
+    block?: Block;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;

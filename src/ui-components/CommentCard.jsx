@@ -13,7 +13,7 @@ import {
 import { Flex, Image, Text } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
 export default function CommentCard(props) {
-  const { post, user, overrides, ...rest } = props;
+  const { post, user, block, overrides, ...rest } = props;
   const [cardContentBackgroundColor, setCardContentBackgroundColor] =
     useStateMutationAction(undefined);
   const cardContentOnMouseEnter = () => {
@@ -120,7 +120,7 @@ export default function CommentCard(props) {
                   padding="0px 0px 0px 0px"
                   whiteSpace="pre-wrap"
                   as="a"
-                  href={`${"/users"}${user?.name}`}
+                  href={`${"/users/"}${user?.id}`}
                   children={user?.name}
                   {...getOverrideProps(overrides, "Author")}
                 ></Text>

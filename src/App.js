@@ -1,25 +1,45 @@
-import logo from './logo.svg';
-import './App.css';
+import { DataStore } from 'aws-amplify';
+import { Post } from './models';
+
+import { useEffect, useState } from 'react';
+import { CommentCard } from './ui-components';
 
 function App() {
+  const [posts, setPosts] = useState([]);
+
+  const getPosts = async () => {
+    const data = await DataStore.query(Post);
+    setPosts(data);
+  };
+
+  useEffect(() => {
+    getPosts();
+  }, []);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      {posts.map((post) => (
+        <CommentCard
+          post={post}
+          key={post.id}
+          user={post.User}
+          overrides={{
+            Share: {
+              onClick: async (e) => {
+                e.preventDefault();
+                const postToChange = await DataStore.query(Post, post.id);
+                await DataStore.save(
+                  Post.copyOf(postToChange, (updated) => {
+                    updated.likes += 1;
+                  })
+                );
+                getPosts();
+              },
+            },
+          }}
+        />
+      ))}
     </div>
   );
 }
-
 export default App;

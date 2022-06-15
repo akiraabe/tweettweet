@@ -4,12 +4,25 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
+type BlockMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
 type UserMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
 type PostMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+export declare class Block {
+  readonly id: string;
+  readonly block_id?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Block, BlockMetaData>);
+  static copyOf(source: Block, mutator: (draft: MutableModel<Block, BlockMetaData>) => MutableModel<Block, BlockMetaData> | void): Block;
 }
 
 export declare class User {
