@@ -8,6 +8,8 @@ type User @model @auth(rules: [{allow: public}]) {
   profilePic: AWSURL
   name: String
   handle: String
+  jobPosition: String
+  follower: Int
 }
 
 type Post @model @auth(rules: [{allow: public}]) {

@@ -10,7 +10,7 @@ import { getOverrideProps } from "@aws-amplify/ui-react/internal";
 import { Button, Flex, Image, Text } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
 export default function ProfileCard(props) {
-  const { overrides, ...rest } = props;
+  const { user, overrides, ...rest } = props;
   return (
     <Flex
       gap="24px"
@@ -30,6 +30,7 @@ export default function ProfileCard(props) {
         position="relative"
         borderRadius="160px"
         padding="0px 0px 0px 0px"
+        src={user?.profilePic}
         {...getOverrideProps(overrides, "image")}
       ></Image>
       <Flex
@@ -39,7 +40,7 @@ export default function ProfileCard(props) {
         shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
-        {...getOverrideProps(overrides, "Name")}
+        {...getOverrideProps(overrides, "Name29766901")}
       >
         <Text
           fontFamily="Inter"
@@ -55,8 +56,8 @@ export default function ProfileCard(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="Melinda Marcus"
-          {...getOverrideProps(overrides, "Melinda Marcus")}
+          children={user?.name}
+          {...getOverrideProps(overrides, "Name29766902")}
         ></Text>
         <Text
           fontFamily="Inter"
@@ -73,8 +74,8 @@ export default function ProfileCard(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="Design Engineer at Cloth Studios"
-          {...getOverrideProps(overrides, "Design Engineer at Cloth Studios")}
+          children={user?.jobPosition}
+          {...getOverrideProps(overrides, "JobPosition")}
         ></Text>
       </Flex>
       <Flex
@@ -112,7 +113,7 @@ export default function ProfileCard(props) {
           position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
-          children="99 Followers"
+          children={`${user?.follower}${" followers"}`}
           {...getOverrideProps(overrides, "99 Followers")}
         ></Text>
       </Flex>
@@ -129,7 +130,7 @@ export default function ProfileCard(props) {
         size="large"
         isDisabled={false}
         variation="primary"
-        children="View Profile"
+        children="Go back"
         {...getOverrideProps(overrides, "Button")}
       ></Button>
     </Flex>

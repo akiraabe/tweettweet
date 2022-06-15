@@ -90,6 +90,20 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "jobPosition": {
+                    "name": "jobPosition",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
+                "follower": {
+                    "name": "follower",
+                    "isArray": false,
+                    "type": "Int",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -229,5 +243,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "c5002fc62b32dcaefd367e831f23da26"
+    "version": "f407db9fae7406e3c735e3e25bbd0260"
 };
