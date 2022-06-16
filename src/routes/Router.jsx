@@ -5,13 +5,13 @@ import { Loading } from '../components/Loading';
 const Top = lazy(() => import('../components/Top'));
 const Profile = lazy(() => import('../components/Profile'));
 
-export const Router = () => {
+export const Router = ({ cognitoUser }) => {
   return (
     <BrowserRouter>
       <Suspense fallback={<Loading />}>
         <Routes>
-          <Route path='' element={<Top />} />
-          <Route path='/' element={<Top />} />
+          <Route path='' element={<Top cognitoUser={cognitoUser} />} />
+          <Route path='/' element={<Top cognitoUser={cognitoUser} />} />
           <Route path='/users/:userId' element={<Profile />} />
         </Routes>
       </Suspense>

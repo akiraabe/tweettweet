@@ -1,6 +1,14 @@
+type Like @model @auth(rules: [{allow: public}]) {
+  id: ID!
+  Post: Post @hasOne
+  deleted: Boolean
+  likedBy: String
+}
+
 type Block @model @auth(rules: [{allow: public}]) {
   id: ID!
   block_id: ID
+  remark: String
 }
 
 type User @model @auth(rules: [{allow: public}]) {
@@ -10,6 +18,7 @@ type User @model @auth(rules: [{allow: public}]) {
   handle: String
   jobPosition: String
   follower: Int
+  accountName: String
 }
 
 type Post @model @auth(rules: [{allow: public}]) {
