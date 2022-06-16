@@ -1,7 +1,22 @@
-import { Router  } from './routes/Router';
+import { Amplify } from 'aws-amplify';
 
-const App = () => {
-  return  <Router />;
+import { withAuthenticator } from '@aws-amplify/ui-react';
+import '@aws-amplify/ui-react/styles.css';
+
+import awsExports from './aws-exports';
+
+import { Router } from './routes/Router';
+Amplify.configure(awsExports);
+
+const App = ({ signOut, user }) => {
+  return (
+    <>
+      <Router />
+      <div>{user.username}</div>
+      {console.log(user)}
+      <button onClick={signOut}> Sign out</button>
+    </>
+  );
 };
 
-export default App;
+export default withAuthenticator(App);
