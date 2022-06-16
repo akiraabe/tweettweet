@@ -10,6 +10,11 @@
       "StackName": "amplify-twetwe-staging-11914",
       "StackId": "arn:aws:cloudformation:ap-northeast-1:742014795691:stack/amplify-twetwe-staging-11914/d85bf890-e5ff-11ec-862e-06a3f729761f",
       "AmplifyAppId": "d1knho2oh50p4s"
+    },
+    "categories": {
+      "auth": {
+        "twetwe": {}
+      }
     }
   }
 }
