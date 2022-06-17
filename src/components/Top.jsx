@@ -52,7 +52,7 @@ function Top({ cognitoUser }) {
                 console.log(likes);
                 // //likes.map(obj => deleteItem(obj));
                 const like = likes
-                  .filter((obj) => obj.Post.postUserId === post.User.id)
+                  .filter((obj) => obj.likedBy === cognitoUser.username)
                   .filter((obj) => obj.Post.id === post.id);
                 console.log('like...');
                 console.log(like[0]);
