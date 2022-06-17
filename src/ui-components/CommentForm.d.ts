@@ -5,12 +5,11 @@
  **************************************************************************/
 
 import React from "react";
-import { Post, User } from "../models";
+import { User } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
 import { FlexProps } from "@aws-amplify/ui-react";
 export declare type CommentFormProps = React.PropsWithChildren<Partial<FlexProps> & {
     user?: User;
-    post?: Post;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;

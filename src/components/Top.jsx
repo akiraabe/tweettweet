@@ -10,6 +10,7 @@ function Top({ cognitoUser }) {
   const getPosts = async () => {
     const data = await DataStore.query(Post);
     setPosts(data);
+    console.log(data);
   };
 
   // const deleteItem = async (obj) => {

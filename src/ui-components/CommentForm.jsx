@@ -18,7 +18,7 @@ import {
   View,
 } from "@aws-amplify/ui-react";
 export default function CommentForm(props) {
-  const { user, post, overrides, ...rest } = props;
+  const { user, overrides, ...rest } = props;
   return (
     <Flex
       gap="0"
@@ -57,7 +57,7 @@ export default function CommentForm(props) {
             objectFit="cover"
             position="relative"
             padding="0px 0px 0px 0px"
-            {...getOverrideProps(overrides, "Edit Profile")}
+            {...getOverrideProps(overrides, "EnterComment")}
           >
             <View
               width="24px"
@@ -152,20 +152,18 @@ export default function CommentForm(props) {
               display="flex"
               gap="8px"
               direction="column"
-              height="129px"
+              width="598px"
+              height="126px"
               justifyContent="center"
               shrink="0"
-              alignSelf="stretch"
-              objectFit="cover"
               position="relative"
               padding="0px 0px 0px 0px"
               label="Content"
-              placeholder="John Doe"
+              placeholder="いまの気持ちを書こう！"
               size="default"
               isDisabled={false}
               labelHidden={false}
               variation="default"
-              value=""
               {...getOverrideProps(overrides, "TextField")}
             ></TextField>
           </Flex>

@@ -1,11 +1,11 @@
 import { DataStore } from 'aws-amplify';
-import { User } from '../models';
-import { useParams } from 'react-router-dom';
+import { Post, User } from '../models';
 import { useEffect, useState } from 'react';
 import CommentForm from '../ui-components/CommentForm';
 
 export const Form = ({ cognitoUser }) => {
   const [user, setUser] = useState({});
+  const [textFieldValue, setTextFieldValue] = useState('');
 
   const getUser = async () => {
     const users = await DataStore.query(User);
@@ -25,16 +25,28 @@ export const Form = ({ cognitoUser }) => {
       <CommentForm
         user={user}
         overrides={{
-          Button: {
-            onClick: (e) => {
-              console.log('button was clicked.');
+          TextField: {
+            value: textFieldValue,
+            onChange: (event) => {
+              setTextFieldValue(event.target.value);
+              console.log(event.target.value);
             },
           },
-          TextField: {
+          Button: {
+            onClick: async (e) => {
+              console.log('button was clicked.');
+              e.preventDefault();
 
-          }
-        }
-      }
+              await DataStore.save(
+                new Post({
+                  content: textFieldValue,
+                  likes: 0,
+                  postUserId: user.id,
+                })
+              );
+            },
+          },
+        }}
       />
     </>
   );
