@@ -11,7 +11,7 @@ Amplify.configure(awsExports);
 const App = ({ signOut, user }) => {
   return (
     <>
-      <Router />
+      <Router cognitoUser={user}/>
       <div>{user.username}</div>
       {console.log(user)}
       <button onClick={signOut}> Sign out</button>
