@@ -4,11 +4,7 @@ import { ModelInit, MutableModel, PersistentModelConstructor } from "@aws-amplif
 
 
 
-type BlockMetaData = {
-  readOnlyFields: 'createdAt' | 'updatedAt';
-}
-
-type UserMetaData = {
+type LikeMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
@@ -16,26 +12,24 @@ type PostMetaData = {
   readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-export declare class Block {
-  readonly id: string;
-  readonly block_id?: string | null;
-  readonly createdAt?: string | null;
-  readonly updatedAt?: string | null;
-  constructor(init: ModelInit<Block, BlockMetaData>);
-  static copyOf(source: Block, mutator: (draft: MutableModel<Block, BlockMetaData>) => MutableModel<Block, BlockMetaData> | void): Block;
+type UserMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
 }
 
-export declare class User {
+type BlockMetaData = {
+  readOnlyFields: 'createdAt' | 'updatedAt';
+}
+
+export declare class Like {
   readonly id: string;
-  readonly profilePic?: string | null;
-  readonly name?: string | null;
-  readonly handle?: string | null;
-  readonly jobPosition?: string | null;
-  readonly follower?: number | null;
+  readonly Post?: Post | null;
+  readonly deleted?: boolean | null;
+  readonly likedBy?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
-  constructor(init: ModelInit<User, UserMetaData>);
-  static copyOf(source: User, mutator: (draft: MutableModel<User, UserMetaData>) => MutableModel<User, UserMetaData> | void): User;
+  readonly likePostId?: string | null;
+  constructor(init: ModelInit<Like, LikeMetaData>);
+  static copyOf(source: Like, mutator: (draft: MutableModel<Like, LikeMetaData>) => MutableModel<Like, LikeMetaData> | void): Like;
 }
 
 export declare class Post {
@@ -49,4 +43,28 @@ export declare class Post {
   readonly postUserId?: string | null;
   constructor(init: ModelInit<Post, PostMetaData>);
   static copyOf(source: Post, mutator: (draft: MutableModel<Post, PostMetaData>) => MutableModel<Post, PostMetaData> | void): Post;
+}
+
+export declare class User {
+  readonly id: string;
+  readonly profilePic?: string | null;
+  readonly name?: string | null;
+  readonly handle?: string | null;
+  readonly jobPosition?: string | null;
+  readonly follower?: number | null;
+  readonly accountName?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<User, UserMetaData>);
+  static copyOf(source: User, mutator: (draft: MutableModel<User, UserMetaData>) => MutableModel<User, UserMetaData> | void): User;
+}
+
+export declare class Block {
+  readonly id: string;
+  readonly block_id?: string | null;
+  readonly remark?: string | null;
+  readonly createdAt?: string | null;
+  readonly updatedAt?: string | null;
+  constructor(init: ModelInit<Block, BlockMetaData>);
+  static copyOf(source: Block, mutator: (draft: MutableModel<Block, BlockMetaData>) => MutableModel<Block, BlockMetaData> | void): Block;
 }
