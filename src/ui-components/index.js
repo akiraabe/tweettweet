@@ -11,6 +11,7 @@ export { default as ReviewCard } from "./ReviewCard";
 export { default as StandardCard } from "./StandardCard";
 export { default as TallCard } from "./TallCard";
 export { default as ProductDetail } from "./ProductDetail";
+export { default as CommentCardCollection } from "./CommentCardCollection";
 export { default as FormCheckout } from "./FormCheckout";
 export { default as SocialPost } from "./SocialPost";
 export { default as Features4x1 } from "./Features4x1";

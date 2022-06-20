@@ -3,7 +3,7 @@ import { Like, Post } from '../models';
 
 import { useEffect, useState } from 'react';
 import { CommentCard } from '../ui-components';
-
+import { Collection } from "@aws-amplify/ui-react";
 function Top({ cognitoUser }) {
   const [posts, setPosts] = useState([]);
 
@@ -13,11 +13,6 @@ function Top({ cognitoUser }) {
     console.log(data);
   };
 
-  // const deleteItem = async (obj) => {
-  //   const modelToDelete = await DataStore.query(Like, obj.id);
-  //   DataStore.delete(modelToDelete);
-  // }
-
   useEffect(() => {
     getPosts();
     console.log('posts');
@@ -25,7 +20,17 @@ function Top({ cognitoUser }) {
 
   return (
     <div>
-      {posts.map((post) => (
+<Collection
+      type="list"
+      isSearchable={true}
+      isPaginated={true}
+      searchPlaceholder="Search..."
+      itemsPerPage={6}
+      direction="column"
+      justifyContent="stretch"
+      items={posts || []}
+    >
+      {(post, index) => (
         <CommentCard
           post={post}
           key={post.id}
@@ -51,7 +56,6 @@ function Top({ cognitoUser }) {
                 // Likeテーブルを探す
                 const likes = await DataStore.query(Like);
                 console.log(likes);
-                // //likes.map(obj => deleteItem(obj));
                 const like = likes
                   .filter((obj) => obj.likedBy === cognitoUser.username)
                   .filter((obj) => obj.Post.id === post.id);
@@ -106,7 +110,8 @@ function Top({ cognitoUser }) {
             },
           }}
         />
-      ))}
+      )}
+      </Collection>
     </div>
   );
 }
