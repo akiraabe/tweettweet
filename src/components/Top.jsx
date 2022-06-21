@@ -1,14 +1,27 @@
-import { DataStore } from 'aws-amplify';
+import { DataStore, Predicates, SortDirection } from 'aws-amplify';
 import { Like, Post } from '../models';
 
 import { useEffect, useState } from 'react';
 import { CommentCard } from '../ui-components';
 import { Collection } from '@aws-amplify/ui-react';
+import { Box, Fab } from '@mui/material';
+import AddIcon from '@mui/icons-material/Add';
+import { useNavigate } from 'react-router-dom';
+
 function Top({ cognitoUser }) {
   const [posts, setPosts] = useState([]);
 
+  const navigate = useNavigate();
+
+  const handleClick = () => {
+    console.log('handleClick was pressed');
+    navigate('/form');
+  };
+
   const getPosts = async () => {
-    const data = await DataStore.query(Post);
+    const data = await DataStore.query(Post, Predicates.ALL, {
+      sort: s => s.postedAt(SortDirection.DESCENDING)
+    });
     setPosts(data);
     console.log(data);
   };
@@ -19,7 +32,14 @@ function Top({ cognitoUser }) {
   }, []);
 
   return (
-    <div>
+    <div style={styles.container}>
+      <div style={styles.boxContainer}>
+        <Box sx={{ '& > :no(style)': { m: 1 } }}>
+          <Fab size='small' color='primary' aria-label='add'>
+            <AddIcon onClick={handleClick} />
+          </Fab>
+        </Box>
+      </div>
       <Collection
         type='list'
         isSearchable={true}
@@ -115,4 +135,20 @@ function Top({ cognitoUser }) {
     </div>
   );
 }
+
+const styles = {
+  container: {
+    width: 450,
+    margin: '0 auto',
+    display: 'flex',
+    flexDirection: 'column',
+    justifyContent: 'center',
+    padding: 20,
+  },
+  boxContainer: {
+    display: 'flex',
+    justifyContent: 'right',
+  },
+};
+
 export default Top;
