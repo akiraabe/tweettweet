@@ -34,4 +34,5 @@ export { default as NavBar } from "./NavBar";
 export { default as FeaturesText2x2 } from "./FeaturesText2x2";
 export { default as MarketingFooter } from "./MarketingFooter";
 export { default as CommentCard } from "./CommentCard";
+export { default as ProfileCardCollection } from "./ProfileCardCollection";
 export { default as studioTheme } from "./studioTheme";

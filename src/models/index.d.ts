@@ -53,6 +53,7 @@ export declare class User {
   readonly jobPosition?: string | null;
   readonly follower?: number | null;
   readonly accountName?: string | null;
+  readonly bio?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   constructor(init: ModelInit<User, UserMetaData>);

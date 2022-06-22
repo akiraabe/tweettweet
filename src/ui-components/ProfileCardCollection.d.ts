@@ -5,12 +5,15 @@
  **************************************************************************/
 
 import React from "react";
-import { User } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { FlexProps } from "@aws-amplify/ui-react";
-export declare type EditProfileProps = React.PropsWithChildren<Partial<FlexProps> & {
-    user?: User;
+import { CollectionProps } from "@aws-amplify/ui-react";
+export declare type ProfileCardCollectionProps = React.PropsWithChildren<Partial<CollectionProps<any>> & {
+    items?: any[];
+    overrideItems?: ({ item: any, index: number }: {
+        item: any;
+        index: any;
+    }) => Record<string, string>;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function EditProfile(props: EditProfileProps): React.ReactElement;
+export default function ProfileCardCollection(props: ProfileCardCollectionProps): React.ReactElement;

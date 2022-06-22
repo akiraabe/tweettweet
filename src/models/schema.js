@@ -233,6 +233,13 @@ export const schema = {
                     "isRequired": false,
                     "attributes": []
                 },
+                "bio": {
+                    "name": "bio",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -344,5 +351,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "ac24c9d1b7aea13fcaa3665e0f501a31"
+    "version": "be99a8bea06f35dd5b03dd2224332cb1"
 };
