@@ -14,8 +14,10 @@ import {
 import { Flex, Icon, Text, View } from "@aws-amplify/ui-react";
 export default function NavBar(props) {
   const { like, overrides, ...rest } = props;
+  // 以下の２行は自動生成がうまく行っていないので、手動で記述する
   const postsOnClick = useNavigateAction({ type: "url", url: "/posts" });
   const usersOnClick = useNavigateAction({ type: "url", url: "/users" });
+
   const signOutOnClick = useAuthSignOutAction({ global: false });
   return (
     <Flex
@@ -100,6 +102,7 @@ export default function NavBar(props) {
           display="flex"
           direction="column"
           justifyContent="flex-start"
+          textDecoration="underline"
           letterSpacing="0.01px"
           shrink="0"
           position="relative"
@@ -121,6 +124,7 @@ export default function NavBar(props) {
           display="flex"
           direction="column"
           justifyContent="flex-start"
+          textDecoration="underline"
           letterSpacing="0.01px"
           shrink="0"
           position="relative"
@@ -152,6 +156,7 @@ export default function NavBar(props) {
           display="flex"
           direction="column"
           justifyContent="flex-start"
+          textDecoration="underline"
           letterSpacing="0.01px"
           width="66px"
           height="14px"
