@@ -15,6 +15,7 @@ export const Router = ({ cognitoUser }) => {
         <Routes>
           <Route path='' element={<Top cognitoUser={cognitoUser} />} />
           <Route path='/' element={<Top cognitoUser={cognitoUser} />} />
+          <Route path='/posts' element={<Top cognitoUser={cognitoUser} />} />
           <Route path='/form' element={<Form cognitoUser={cognitoUser} />} />
           <Route path='/users' element={<ProfileCollection />} />
           <Route path='/users/:userId' element={<Profile />} />
