@@ -22,7 +22,7 @@ import {
 } from "@aws-amplify/ui-react";
 export default function CommentForm(props) {
   const { user, overrides, ...rest } = props;
-  const vectorOnClick = useNavigateAction({ type: "url", url: "" });
+  const vectorOnClick = useNavigateAction({ type: "url", url: "/" });
   return (
     <Flex
       gap="0"

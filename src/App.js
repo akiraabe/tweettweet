@@ -6,15 +6,14 @@ import '@aws-amplify/ui-react/styles.css';
 import awsExports from './aws-exports';
 
 import { Router } from './routes/Router';
+import NavBar from './ui-components/NavBar';
 Amplify.configure(awsExports);
 
 const App = ({ signOut, user }) => {
   return (
     <>
-      <Router cognitoUser={user}/>
-      <div>{user.username}</div>
-      {console.log(user)}
-      <button onClick={signOut}> Sign out</button>
+      <NavBar width='100vw' />
+      <Router cognitoUser={user} />
     </>
   );
 };
