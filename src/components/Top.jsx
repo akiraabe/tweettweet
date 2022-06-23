@@ -1,3 +1,4 @@
+import React from 'react';
 import { DataStore, Predicates, SortDirection } from 'aws-amplify';
 import { Like, Post } from '../models';
 import moment from 'moment';
@@ -9,6 +10,7 @@ import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
 
 function Top({ cognitoUser }) {
+  console.log(cognitoUser);
   const [posts, setPosts] = useState([]);
 
   const navigate = useNavigate();
