@@ -17,6 +17,8 @@ export default function NavBar(props) {
   const { like, overrides, ...rest } = props;
   const [postsColor, setPostsColor] = useStateMutationAction("rgba(0,0,0,1)");
   const [usersColor, setUsersColor] = useStateMutationAction("rgba(0,0,0,1)");
+  const [newprofileColor, setNewprofileColor] =
+    useStateMutationAction("rgba(0,0,0,1)");
   const [signOutColor, setSignOutColor] =
     useStateMutationAction("rgba(0,0,0,1)");
   const postsOnClick = useNavigateAction({ type: "url", url: "/posts" });
@@ -32,6 +34,16 @@ export default function NavBar(props) {
   };
   const usersOnMouseLeave = () => {
     setUsersColor("black");
+  };
+  const newprofileOnClick = useNavigateAction({
+    type: "url",
+    url: "/newProfile",
+  });
+  const newprofileOnMouseEnter = () => {
+    setNewprofileColor("blue");
+  };
+  const newprofileOnMouseLeave = () => {
+    setNewprofileColor("black");
   };
   const signOutOnClick = useAuthSignOutAction({ global: false });
   const signOutOnMouseEnter = () => {
@@ -168,6 +180,34 @@ export default function NavBar(props) {
             usersOnMouseLeave();
           }}
           {...getOverrideProps(overrides, "Users")}
+        ></Text>
+        <Text
+          fontFamily="Inter"
+          fontSize="16px"
+          fontWeight="400"
+          color={newprofileColor}
+          lineHeight="24px"
+          textAlign="left"
+          display="flex"
+          direction="column"
+          justifyContent="flex-start"
+          textDecoration="underline"
+          letterSpacing="0.01px"
+          shrink="0"
+          position="relative"
+          padding="0px 0px 0px 0px"
+          whiteSpace="pre-wrap"
+          children="New profile"
+          onClick={() => {
+            newprofileOnClick();
+          }}
+          onMouseEnter={() => {
+            newprofileOnMouseEnter();
+          }}
+          onMouseLeave={() => {
+            newprofileOnMouseLeave();
+          }}
+          {...getOverrideProps(overrides, "New profile")}
         ></Text>
       </Flex>
       <View

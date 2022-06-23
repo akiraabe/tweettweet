@@ -7,6 +7,7 @@ const Top = lazy(() => import('../components/Top'));
 const Form = lazy(() => import('../components/Form'));
 const Profile = lazy(() => import('../components/Profile'));
 const ProfileEditor = lazy(()=> import('../components/ProfileEditor'));
+const ProfileRegister = lazy(()=> import('../components/ProfileRegister'));
 
 export const Router = ({ cognitoUser }) => {
   return (
@@ -15,6 +16,8 @@ export const Router = ({ cognitoUser }) => {
         <Routes>
           <Route path='' element={<Top cognitoUser={cognitoUser} />} />
           <Route path='/' element={<Top cognitoUser={cognitoUser} />} />
+          <Route path='/newProfile' element={<ProfileRegister cognitoUser={cognitoUser} />} />
+          {/* <Route path='/newProfile' element={<FileUploader />} /> */}
           <Route path='/posts' element={<Top cognitoUser={cognitoUser} />} />
           <Route path='/form' element={<Form cognitoUser={cognitoUser} />} />
           <Route path='/users' element={<ProfileCollection />} />

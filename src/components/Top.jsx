@@ -7,7 +7,6 @@ import { Collection } from '@aws-amplify/ui-react';
 import { Box, Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
-import ProfileRegister from './ProfileRegister';
 
 function Top({ cognitoUser }) {
   const [posts, setPosts] = useState([]);
@@ -32,10 +31,6 @@ function Top({ cognitoUser }) {
     console.log('posts');
   }, []);
 
-  const newUser = () => {
-    return false;
-  }
-
   // refactoringで切り出したメソッド
   const getLikes = async (post) => {
     // console.log('getLikes was called');
@@ -49,7 +44,6 @@ function Top({ cognitoUser }) {
     return like;
   }
   return (
-    newUser()? <ProfileRegister /> : 
     <div style={styles.container}>
       <div style={styles.boxContainer}>
         <Box sx={{ '& > :no(style)': { m: 1 } }}>

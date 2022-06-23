@@ -36,28 +36,28 @@ export const ProfileEditor = () => {
         overrides={{
           TextFieldName: {
             value: textFieldNameValue,
-            placeHolder: `${user?.name}`,
+            placeholder: `${user?.name}`,
             onChange: (event) => {
               setTextFieldNameValue(event.target.value);
             },
           },
           TextFieldHandle: {
             value: textFieldHandleValue,
-            placeHolder: `${user?.handle}`,
+            placeholder: `${user?.handle}`,
             onChange: (event) => {
               setTextFieldHandleValue(event.target.value);
             },
           },
           TextFieldJobPosition: {
             value: textFieldJobPositionValue,
-            placeHolder: `${user?.jobPosition}`,
+            placeholder: `${user?.jobPosition}`,
             onChange: (event) => {
               setTextFieldJobPositionValue(event.target.value);
             },
           },
           TextFieldBio: {
             value: textFieldBioValue,
-            placeHolder: `${user?.bio}`,
+            placeholder: `${user?.bio}`,
             onChange: (event) => {
               setTextFieldBioValue(event.target.value);
             },
