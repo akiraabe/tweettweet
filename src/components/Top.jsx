@@ -7,6 +7,7 @@ import { Collection } from '@aws-amplify/ui-react';
 import { Box, Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
+import ProfileRegister from './ProfileRegister';
 
 function Top({ cognitoUser }) {
   const [posts, setPosts] = useState([]);
@@ -31,7 +32,24 @@ function Top({ cognitoUser }) {
     console.log('posts');
   }, []);
 
+  const newUser = () => {
+    return false;
+  }
+
+  // refactoringで切り出したメソッド
+  const getLikes = async (post) => {
+    // console.log('getLikes was called');
+    const likes = await DataStore.query(Like);
+    // console.log(likes);
+    const like = likes
+      .filter((obj) => obj.likedBy === cognitoUser.username)
+      .filter((obj) => obj.Post.id === post.id);
+    // console.log('like...');
+    // console.log(like[0]);
+    return like;
+  }
   return (
+    newUser()? <ProfileRegister /> : 
     <div style={styles.container}>
       <div style={styles.boxContainer}>
         <Box sx={{ '& > :no(style)': { m: 1 } }}>
@@ -64,23 +82,16 @@ function Top({ cognitoUser }) {
                   const postToChange = await DataStore.query(Post, post.id);
 
                   // post.UserとcognitoUserが同じか判定する。
-                  console.log(post.User.accountName);
-                  console.log(cognitoUser.username);
+                  // console.log(post.User.accountName);
+                  // console.log(cognitoUser.username);
                   if (post.User.accountName === cognitoUser.username) {
+                    // 自分のpostにはLikeできないので、早期リターン
                     console.log('same user');
                     return;
-                  } else {
-                    console.log('another user');
                   }
 
                   // Likeテーブルを探す
-                  const likes = await DataStore.query(Like);
-                  console.log(likes);
-                  const like = likes
-                    .filter((obj) => obj.likedBy === cognitoUser.username)
-                    .filter((obj) => obj.Post.id === post.id);
-                  console.log('like...');
-                  console.log(like[0]);
+                  const like = await getLikes(post);
                   const like0 = like[0];
 
                   if (like0 && !like0.deleted) {

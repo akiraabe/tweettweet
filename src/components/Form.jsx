@@ -24,7 +24,6 @@ export const Form = ({ cognitoUser }) => {
 
   return (
     <>
-      <div>UserId: {user.id} </div>
       <CommentForm
         user={user}
         overrides={{

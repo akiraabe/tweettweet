@@ -6,7 +6,7 @@ import ProfileCard from '../ui-components/ProfileCard';
 
 export const Profile = () => {
   const params = useParams();
-  console.log(params);
+  // console.log(params);
   const id = params.userId;
 
   const [user, setUser] = useState(null);
@@ -15,7 +15,7 @@ export const Profile = () => {
 
   const getUser = async () => {
     const user = await DataStore.query(User, id);
-    console.log(user);
+    // console.log(user);
     setUser(user);
   };
 
@@ -25,7 +25,6 @@ export const Profile = () => {
 
   return (
     <>
-      <div>UserId: {id} </div>
       <ProfileCard
         user={user}
         overrides={{

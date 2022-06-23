@@ -5,8 +5,8 @@
  **************************************************************************/
 
 import React from "react";
-import { User } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { User } from "../models";
 import { FlexProps } from "@aws-amplify/ui-react";
 export declare type EditProfileProps = React.PropsWithChildren<Partial<FlexProps> & {
     user?: User;

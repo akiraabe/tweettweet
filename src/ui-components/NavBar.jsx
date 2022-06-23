@@ -10,15 +10,36 @@ import {
   getOverrideProps,
   useAuthSignOutAction,
   useNavigateAction,
+  useStateMutationAction,
 } from "@aws-amplify/ui-react/internal";
 import { Flex, Icon, Text, View } from "@aws-amplify/ui-react";
 export default function NavBar(props) {
   const { like, overrides, ...rest } = props;
-  // 以下の２行は自動生成がうまく行っていないので、手動で記述する
+  const [postsColor, setPostsColor] = useStateMutationAction("rgba(0,0,0,1)");
+  const [usersColor, setUsersColor] = useStateMutationAction("rgba(0,0,0,1)");
+  const [signOutColor, setSignOutColor] =
+    useStateMutationAction("rgba(0,0,0,1)");
   const postsOnClick = useNavigateAction({ type: "url", url: "/posts" });
+  const postsOnMouseEnter = () => {
+    setPostsColor("blue");
+  };
+  const postsOnMouseLeave = () => {
+    setPostsColor("black");
+  };
   const usersOnClick = useNavigateAction({ type: "url", url: "/users" });
-
+  const usersOnMouseEnter = () => {
+    setUsersColor("blue");
+  };
+  const usersOnMouseLeave = () => {
+    setUsersColor("black");
+  };
   const signOutOnClick = useAuthSignOutAction({ global: false });
+  const signOutOnMouseEnter = () => {
+    setSignOutColor("blue");
+  };
+  const signOutOnMouseLeave = () => {
+    setSignOutColor("black");
+  };
   return (
     <Flex
       gap="20px"
@@ -96,7 +117,7 @@ export default function NavBar(props) {
           fontFamily="Inter"
           fontSize="16px"
           fontWeight="400"
-          color="rgba(0,0,0,1)"
+          color={postsColor}
           lineHeight="24px"
           textAlign="left"
           display="flex"
@@ -112,13 +133,19 @@ export default function NavBar(props) {
           onClick={() => {
             postsOnClick();
           }}
+          onMouseEnter={() => {
+            postsOnMouseEnter();
+          }}
+          onMouseLeave={() => {
+            postsOnMouseLeave();
+          }}
           {...getOverrideProps(overrides, "Posts")}
         ></Text>
         <Text
           fontFamily="Inter"
           fontSize="16px"
           fontWeight="400"
-          color="rgba(0,0,0,1)"
+          color={usersColor}
           lineHeight="24px"
           textAlign="left"
           display="flex"
@@ -133,6 +160,12 @@ export default function NavBar(props) {
           children="Users"
           onClick={() => {
             usersOnClick();
+          }}
+          onMouseEnter={() => {
+            usersOnMouseEnter();
+          }}
+          onMouseLeave={() => {
+            usersOnMouseLeave();
           }}
           {...getOverrideProps(overrides, "Users")}
         ></Text>
@@ -150,7 +183,7 @@ export default function NavBar(props) {
           fontFamily="Inter"
           fontSize="16px"
           fontWeight="400"
-          color="rgba(0,0,0,1)"
+          color={signOutColor}
           lineHeight="24px"
           textAlign="left"
           display="flex"
@@ -168,6 +201,12 @@ export default function NavBar(props) {
           children="SignOut"
           onClick={() => {
             signOutOnClick();
+          }}
+          onMouseEnter={() => {
+            signOutOnMouseEnter();
+          }}
+          onMouseLeave={() => {
+            signOutOnMouseLeave();
           }}
           {...getOverrideProps(overrides, "SignOut")}
         ></Text>
