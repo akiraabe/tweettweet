@@ -25,6 +25,12 @@ export const ProfileEditor = () => {
     setUser(user);
   };
 
+  // loginしているユーザーのデータかどうかを判定する
+  const isLoginUser = () => {
+    // return (user.accountName === cognitoUser.username) 
+    return false;
+  }
+
   useEffect(() => {
     getUser();
   }, []);

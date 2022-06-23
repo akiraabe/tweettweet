@@ -1,6 +1,6 @@
 import { DataStore, Predicates, SortDirection } from 'aws-amplify';
 import { Like, Post } from '../models';
-
+import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { CommentCard } from '../ui-components';
 import { Collection } from '@aws-amplify/ui-react';
@@ -43,6 +43,11 @@ function Top({ cognitoUser }) {
     // console.log(like[0]);
     return like;
   }
+
+  // postedAtの編集メソッド
+  const formatDate = (date) => {
+    return moment(date).format('YYYY/MM/DD HH:mm');
+  }
   return (
     <div style={styles.container}>
       <div style={styles.boxContainer}>
@@ -68,6 +73,9 @@ function Top({ cognitoUser }) {
             key={post.id}
             user={post.User}
             overrides={{
+              Timestamp: {
+                children: formatDate(post.postedAt),
+              },
               Share: {
                 onClick: async (e) => {
                   e.preventDefault();
