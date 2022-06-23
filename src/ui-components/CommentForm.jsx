@@ -6,7 +6,10 @@
 
 /* eslint-disable */
 import React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  getOverrideProps,
+  useNavigateAction,
+} from "@aws-amplify/ui-react/internal";
 import {
   Button,
   Divider,
@@ -19,6 +22,7 @@ import {
 } from "@aws-amplify/ui-react";
 export default function CommentForm(props) {
   const { user, overrides, ...rest } = props;
+  const vectorOnClick = useNavigateAction({ type: "url", url: "" });
   return (
     <Flex
       gap="0"
@@ -84,6 +88,9 @@ export default function CommentForm(props) {
                 bottom="20.83%"
                 left="20.83%"
                 right="20.83%"
+                onClick={() => {
+                  vectorOnClick();
+                }}
                 {...getOverrideProps(overrides, "Vector")}
               ></Icon>
             </View>

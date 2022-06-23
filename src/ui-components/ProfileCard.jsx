@@ -130,7 +130,7 @@ export default function ProfileCard(props) {
         size="large"
         isDisabled={false}
         variation="primary"
-        children="Go back"
+        children="Profile"
         {...getOverrideProps(overrides, "Button")}
       ></Button>
     </Flex>

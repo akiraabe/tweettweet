@@ -6,7 +6,10 @@
 
 /* eslint-disable */
 import React from "react";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import {
+  getOverrideProps,
+  useNavigateAction,
+} from "@aws-amplify/ui-react/internal";
 import {
   Button,
   Divider,
@@ -18,7 +21,8 @@ import {
   View,
 } from "@aws-amplify/ui-react";
 export default function EditProfile(props) {
-  const { overrides, ...rest } = props;
+  const { user, overrides, ...rest } = props;
+  const vectorOnClick = useNavigateAction({ type: "url", url: "" });
   return (
     <Flex
       gap="16px"
@@ -76,6 +80,9 @@ export default function EditProfile(props) {
               bottom="20.83%"
               left="20.83%"
               right="20.83%"
+              onClick={() => {
+                vectorOnClick();
+              }}
               {...getOverrideProps(overrides, "Vector")}
             ></Icon>
           </View>
@@ -126,6 +133,7 @@ export default function EditProfile(props) {
             position="relative"
             borderRadius="160px"
             padding="0px 0px 0px 0px"
+            src={user?.profilePic}
             {...getOverrideProps(overrides, "image")}
           ></Image>
           <Text
@@ -173,7 +181,8 @@ export default function EditProfile(props) {
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField29766922")}
+            value={user?.name}
+            {...getOverrideProps(overrides, "TextFieldName")}
           ></TextField>
           <TextField
             display="flex"
@@ -185,13 +194,33 @@ export default function EditProfile(props) {
             objectFit="cover"
             position="relative"
             padding="0px 0px 0px 0px"
-            label="Location"
+            label="Handle name"
+            placeholder="Your handle name"
+            size="default"
+            isDisabled={false}
+            labelHidden={false}
+            variation="default"
+            value={user?.handle}
+            {...getOverrideProps(overrides, "TextFieldHandle")}
+          ></TextField>
+          <TextField
+            display="flex"
+            gap="8px"
+            direction="column"
+            justifyContent="center"
+            shrink="0"
+            alignSelf="stretch"
+            objectFit="cover"
+            position="relative"
+            padding="0px 0px 0px 0px"
+            label="Job Position"
             placeholder="Seattle, WA"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField29766923")}
+            value={user?.jobPosition}
+            {...getOverrideProps(overrides, "TextFieldJobPosition")}
           ></TextField>
           <TextField
             display="flex"
@@ -203,13 +232,14 @@ export default function EditProfile(props) {
             objectFit="cover"
             position="relative"
             padding="0px 0px 0px 0px"
-            label="Email"
-            placeholder="john.doe@awsamplify.com"
+            label="Bio"
+            placeholder="Your bio"
             size="default"
             isDisabled={false}
             labelHidden={false}
             variation="default"
-            {...getOverrideProps(overrides, "TextField29766924")}
+            value={user?.bio}
+            {...getOverrideProps(overrides, "TextFieldBio")}
           ></TextField>
         </Flex>
         <Divider

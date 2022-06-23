@@ -6,11 +6,14 @@
 
 import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { Like } from "../models";
-import { FlexProps } from "@aws-amplify/ui-react";
-export declare type NavBarProps = React.PropsWithChildren<Partial<FlexProps> & {
-    like?: Like;
+import { CollectionProps } from "@aws-amplify/ui-react";
+export declare type ProfileCardCollectionProps = React.PropsWithChildren<Partial<CollectionProps<any>> & {
+    items?: any[];
+    overrideItems?: ({ item: any, index: number }: {
+        item: any;
+        index: any;
+    }) => Record<string, string>;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function NavBar(props: NavBarProps): React.ReactElement;
+export default function ProfileCardCollection(props: ProfileCardCollectionProps): React.ReactElement;
