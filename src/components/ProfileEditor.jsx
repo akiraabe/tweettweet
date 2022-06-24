@@ -5,12 +5,13 @@ import { useEffect, useState } from 'react';
 
 import EditProfile from '../ui-components/EditProfile';
 
-export const ProfileEditor = () => {
+export const ProfileEditor = ({ cognitoUser }) => {
   const params = useParams();
   console.log(params);
   const id = params.userId;
 
   const [user, setUser] = useState(null);
+  const [isLoginUser, setIsLoginUser] = useState(false);
   const [textFieldNameValue, setTextFieldNameValue] = useState('');
   const [textFieldHandleValue, setTextFieldHandleValue] = useState('');
   const [textFieldJobPositionValue, setTextFieldJobPositionValue] =
@@ -23,65 +24,86 @@ export const ProfileEditor = () => {
     const user = await DataStore.query(User, id);
     console.log(user);
     setUser(user);
+    setIsLoginUser(user.accountName === cognitoUser.username);
+    console.log('isLoginUser :' + isLoginUser);
   };
 
   useEffect(() => {
     getUser();
   }, []);
-  return (
-    <>
-      {/* <div>UserId: {user.id} </div> */}
+
+  if (!isLoginUser) {
+    return (
       <EditProfile
         user={user}
         overrides={{
           TextFieldName: {
-            value: textFieldNameValue,
-            placeHolder: `${user?.name}`,
-            onChange: (event) => {
-              setTextFieldNameValue(event.target.value);
-            },
+            placeholder: `${user?.name}`,
           },
           TextFieldHandle: {
-            value: textFieldHandleValue,
-            placeHolder: `${user?.handle}`,
-            onChange: (event) => {
-              setTextFieldHandleValue(event.target.value);
-            },
+            placeholder: `${user?.handle}`,
           },
           TextFieldJobPosition: {
-            value: textFieldJobPositionValue,
-            placeHolder: `${user?.jobPosition}`,
-            onChange: (event) => {
-              setTextFieldJobPositionValue(event.target.value);
-            },
+            placeholder: `${user?.jobPosition}`,
           },
           TextFieldBio: {
-            value: textFieldBioValue,
-            placeHolder: `${user?.bio}`,
-            onChange: (event) => {
-              setTextFieldBioValue(event.target.value);
-            },
-          },
-          Button: {
-            onClick: async (e) => {
-              console.log('button was clicked.');
-              e.preventDefault();
-              // update
-              await DataStore.save(
-                User.copyOf(user, (updated) => {
-                  updated.name = textFieldNameValue || user.name;
-                  updated.handle = textFieldHandleValue || user.handle;
-                  updated.bio = textFieldBioValue || user.bio;
-                })
-              );
-
-              // 画面遷移
-              navigate('/');
-            },
+            placeholder: `${user?.bio}`,
           },
         }}
       />
-    </>
+    );
+  }
+  return (
+    <EditProfile
+      user={user}
+      overrides={{
+        TextFieldName: {
+          value: textFieldNameValue,
+          placeholder: `${user?.name}`,
+          onChange: (event) => {
+            setTextFieldNameValue(event.target.value);
+          },
+        },
+        TextFieldHandle: {
+          value: textFieldHandleValue,
+          placeholder: `${user?.handle}`,
+          onChange: (event) => {
+            setTextFieldHandleValue(event.target.value);
+          },
+        },
+        TextFieldJobPosition: {
+          value: textFieldJobPositionValue,
+          placeholder: `${user?.jobPosition}`,
+          onChange: (event) => {
+            setTextFieldJobPositionValue(event.target.value);
+          },
+        },
+        TextFieldBio: {
+          value: textFieldBioValue,
+          placeholder: `${user?.bio}`,
+          onChange: (event) => {
+            setTextFieldBioValue(event.target.value);
+          },
+        },
+        Button: {
+          onClick: async (e) => {
+            console.log('button was clicked.');
+            e.preventDefault();
+            // update
+            await DataStore.save(
+              User.copyOf(user, (updated) => {
+                updated.name = textFieldNameValue || user.name;
+                updated.handle = textFieldHandleValue || user.handle;
+                updated.bio = textFieldBioValue || user.bio;
+              })
+            );
+
+            // 画面遷移
+            navigate('/');
+          },
+        },
+      }}
+    />
   );
 };
 

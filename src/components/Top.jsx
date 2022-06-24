@@ -1,15 +1,16 @@
+import React from 'react';
 import { DataStore, Predicates, SortDirection } from 'aws-amplify';
 import { Like, Post } from '../models';
-
+import moment from 'moment';
 import { useEffect, useState } from 'react';
 import { CommentCard } from '../ui-components';
 import { Collection } from '@aws-amplify/ui-react';
 import { Box, Fab } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
-import ProfileRegister from './ProfileRegister';
 
 function Top({ cognitoUser }) {
+  console.log(cognitoUser);
   const [posts, setPosts] = useState([]);
 
   const navigate = useNavigate();
@@ -32,10 +33,6 @@ function Top({ cognitoUser }) {
     console.log('posts');
   }, []);
 
-  const newUser = () => {
-    return false;
-  }
-
   // refactoringで切り出したメソッド
   const getLikes = async (post) => {
     // console.log('getLikes was called');
@@ -48,8 +45,12 @@ function Top({ cognitoUser }) {
     // console.log(like[0]);
     return like;
   }
+
+  // postedAtの編集メソッド
+  const formatDate = (date) => {
+    return moment(date).format('YYYY/MM/DD HH:mm');
+  }
   return (
-    newUser()? <ProfileRegister /> : 
     <div style={styles.container}>
       <div style={styles.boxContainer}>
         <Box sx={{ '& > :no(style)': { m: 1 } }}>
@@ -74,6 +75,9 @@ function Top({ cognitoUser }) {
             key={post.id}
             user={post.User}
             overrides={{
+              Timestamp: {
+                children: formatDate(post.postedAt),
+              },
               Share: {
                 onClick: async (e) => {
                   e.preventDefault();

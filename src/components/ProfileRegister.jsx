@@ -1,12 +1,13 @@
 import { DataStore } from 'aws-amplify';
 import { User } from '../models';
 import { useNavigate } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import md5 from 'js-md5';
 
 import EditProfile from '../ui-components/EditProfile';
 
-export const ProfileRegister = () => {
-  // const [user, setUser] = useState(null);
+export const ProfileRegister = ({ cognitoUser }) => {
+  const [url, setUrl] = useState('');
   const [textFieldNameValue, setTextFieldNameValue] = useState('');
   const [textFieldHandleValue, setTextFieldHandleValue] = useState('');
   const [textFieldJobPositionValue, setTextFieldJobPositionValue] =
@@ -15,43 +16,45 @@ export const ProfileRegister = () => {
 
   const navigate = useNavigate();
 
-  // const getUser = async () => {
-  //   const user = await DataStore.query(User, id);
-  //   console.log(user);
-  //   setUser(user);
-  // };
+  // e-mailアドレスからGravatarのURLを取得します
+  const getGravatarUrl = (email) => {
+    // md5ハッシュを生成します
+    const hash = md5(email);
+    return `https://www.gravatar.com/avatar/${hash}`;
+  };
 
-  // useEffect(() => {
-  //   getUser();
-  // }, []);
+  useEffect(() => {
+    setUrl(getGravatarUrl(cognitoUser.attributes.email));
+  },[]);
+
   return (
     <>
       <EditProfile
         overrides={{
           TextFieldName: {
             value: textFieldNameValue,
-            placeHolder: 'input your name',
+            placeholder: 'input your name',
             onChange: (event) => {
               setTextFieldNameValue(event.target.value);
             },
           },
           TextFieldHandle: {
             value: textFieldHandleValue,
-            placeHolder: 'input your handle',
+            placeholder: 'input your handle',
             onChange: (event) => {
               setTextFieldHandleValue(event.target.value);
             },
           },
           TextFieldJobPosition: {
             value: textFieldJobPositionValue,
-            placeHolder: 'input your job position',
+            placeholder: 'input your job position',
             onChange: (event) => {
               setTextFieldJobPositionValue(event.target.value);
             },
           },
           TextFieldBio: {
             value: textFieldBioValue,
-            placeHolder: 'input your bio',
+            placeholder: 'input your bio',
             onChange: (event) => {
               setTextFieldBioValue(event.target.value);
             },
@@ -63,11 +66,12 @@ export const ProfileRegister = () => {
               // update
               await DataStore.save(
                 new User({
+                  profilePic: url,
                   name: textFieldNameValue,
                   handle: textFieldHandleValue,
                   jobPosition: textFieldJobPositionValue,
                   bio: textFieldBioValue,
-                  accountName: 'xxxx',
+                  accountName: cognitoUser.username,
                 })
               );
 
