@@ -128,7 +128,7 @@ export default function CommentCard(props) {
                   fontFamily="Inter"
                   fontSize="16px"
                   fontWeight="400"
-                  color="rgba(92,102,112,1)"
+                  color="rgba(92,103,112,1)"
                   lineHeight="24px"
                   textAlign="left"
                   display="flex"
@@ -140,17 +140,35 @@ export default function CommentCard(props) {
                   padding="0px 0px 0px 0px"
                   whiteSpace="pre-wrap"
                   children={`${"@"}${user?.handle}`}
+                  {...getOverrideProps(overrides, "handle")}
+                ></Text>
+                <Text
+                  fontFamily="Inter"
+                  fontSize="16px"
+                  fontWeight="400"
+                  color="rgba(92,102,112,1)"
+                  lineHeight="24px"
+                  textAlign="left"
+                  display="flex"
+                  direction="column"
+                  justifyContent="flex-start"
+                  letterSpacing="0.01px"
+                  shrink="0"
+                  position="relative"
+                  padding="0px 0px 0px 0px"
+                  whiteSpace="pre-wrap"
+                  children={post?.postedAt}
                   {...getOverrideProps(overrides, "Timestamp")}
                 ></Text>
               </Flex>
               <Flex
                 gap="0"
                 direction="row"
-                width="179px"
+                width="111px"
                 justifyContent="flex-end"
                 alignItems="flex-start"
                 grow="1"
-                basis="179px"
+                basis="111px"
                 height="24px"
                 position="relative"
                 padding="0px 0px 0px 0px"
