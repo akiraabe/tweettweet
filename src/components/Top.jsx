@@ -10,13 +10,13 @@ import AddIcon from '@mui/icons-material/Add';
 import { useNavigate } from 'react-router-dom';
 
 function Top({ cognitoUser }) {
-  console.log(cognitoUser);
+  // console.log(cognitoUser);
   const [posts, setPosts] = useState([]);
 
   const navigate = useNavigate();
 
   const handleClick = () => {
-    console.log('handleClick was pressed');
+    // console.log('handleClick was pressed');
     navigate('/form');
   };
 
@@ -25,12 +25,12 @@ function Top({ cognitoUser }) {
       sort: s => s.postedAt(SortDirection.DESCENDING)
     });
     setPosts(data);
-    console.log(data);
+    // console.log(data);
   };
 
   useEffect(() => {
     getPosts();
-    console.log('posts');
+    // console.log('posts');
   }, []);
 
   // refactoringで切り出したメソッド
@@ -90,7 +90,7 @@ function Top({ cognitoUser }) {
                   // console.log(cognitoUser.username);
                   if (post.User.accountName === cognitoUser.username) {
                     // 自分のpostにはLikeできないので、早期リターン
-                    console.log('same user');
+                    // console.log('same user');
                     return;
                   }
 
@@ -114,8 +114,8 @@ function Top({ cognitoUser }) {
                   } else {
                     if (like.length === 0) {
                       // Likeテーブルを作る
-                      console.log('SaveLike');
-                      console.log(post);
+                      // console.log('SaveLike');
+                      // console.log(post);
                       await DataStore.save(
                         new Like({
                           Post: post,
@@ -131,7 +131,7 @@ function Top({ cognitoUser }) {
                         })
                       );
                     }
-                    console.log('SaveLike # after');
+                    // console.log('SaveLike # after');
 
                     // count up
                     await DataStore.save(

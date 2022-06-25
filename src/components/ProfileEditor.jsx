@@ -7,7 +7,7 @@ import EditProfile from '../ui-components/EditProfile';
 
 export const ProfileEditor = ({ cognitoUser }) => {
   const params = useParams();
-  console.log(params);
+  // console.log(params);
   const id = params.userId;
 
   const [user, setUser] = useState(null);
@@ -22,10 +22,10 @@ export const ProfileEditor = ({ cognitoUser }) => {
 
   const getUser = async () => {
     const user = await DataStore.query(User, id);
-    console.log(user);
+    // console.log(user);
     setUser(user);
     setIsLoginUser(user.accountName === cognitoUser.username);
-    console.log('isLoginUser :' + isLoginUser);
+    // console.log('isLoginUser :' + isLoginUser);
   };
 
   useEffect(() => {
@@ -87,7 +87,7 @@ export const ProfileEditor = ({ cognitoUser }) => {
         },
         Button: {
           onClick: async (e) => {
-            console.log('button was clicked.');
+            // console.log('button was clicked.');
             e.preventDefault();
             // update
             await DataStore.save(

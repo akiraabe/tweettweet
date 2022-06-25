@@ -30,7 +30,7 @@ export const Profile = () => {
         overrides={{
           Button: {
             onClick: (e) => {
-              console.log('button was clicked.');
+              // console.log('button was clicked.');
               navigate(`/profile/${id}`);
             },
           },

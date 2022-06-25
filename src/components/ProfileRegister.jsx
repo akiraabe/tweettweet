@@ -61,7 +61,7 @@ export const ProfileRegister = ({ cognitoUser }) => {
           },
           Button: {
             onClick: async (e) => {
-              console.log('button was clicked.');
+              // console.log('button was clicked.');
               e.preventDefault();
               // update
               await DataStore.save(

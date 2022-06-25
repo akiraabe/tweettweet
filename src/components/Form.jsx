@@ -31,12 +31,12 @@ export const Form = ({ cognitoUser }) => {
             value: textFieldValue,
             onChange: (event) => {
               setTextFieldValue(event.target.value);
-              console.log(event.target.value);
+              // console.log(event.target.value);
             },
           },
           Button: {
             onClick: async (e) => {
-              console.log('button was clicked.');
+              // console.log('button was clicked.');
               e.preventDefault();
 
               await DataStore.save(

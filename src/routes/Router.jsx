@@ -10,7 +10,7 @@ const ProfileEditor = lazy(() => import('../components/ProfileEditor'));
 const ProfileRegister = lazy(() => import('../components/ProfileRegister'));
 
 export const Router = ({ cognitoUser }) => {
-  console.log(cognitoUser);
+  // console.log(cognitoUser);
   return (
     <BrowserRouter>
       <Suspense fallback={<Loading />}>
