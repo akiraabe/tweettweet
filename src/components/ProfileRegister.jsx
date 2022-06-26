@@ -31,6 +31,12 @@ export const ProfileRegister = ({ cognitoUser }) => {
     <>
       <EditProfile
         overrides={{
+          Icon: {
+            onClick: (e) => {
+              // console.log('icon was clicked.');
+              navigate('/posts/');
+            }
+          },
           TextFieldName: {
             value: textFieldNameValue,
             placeholder: 'input your name',

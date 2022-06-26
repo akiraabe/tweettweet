@@ -37,6 +37,12 @@ export const ProfileEditor = ({ cognitoUser }) => {
       <EditProfile
         user={user}
         overrides={{
+          Icon: {
+            onClick: (e) => {
+              // console.log('icon was clicked.');
+              navigate('/posts/');
+            }
+          },
           TextFieldName: {
             placeholder: `${user?.name}`,
           },
@@ -57,6 +63,12 @@ export const ProfileEditor = ({ cognitoUser }) => {
     <EditProfile
       user={user}
       overrides={{
+        Icon: {
+          onClick: (e) => {
+            // console.log('icon was clicked.');
+            navigate('/posts/');
+          }
+        },
         TextFieldName: {
           value: textFieldNameValue,
           placeholder: `${user?.name}`,
