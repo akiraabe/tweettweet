@@ -13,21 +13,29 @@ import {
 import { Flex, Image, Text } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
 export default function CommentCard(props) {
-  const { post, user, block, overrides, ...rest } = props;
+  const { post, user, overrides, ...rest } = props;
   const [cardContentBackgroundColor, setCardContentBackgroundColor] =
     useStateMutationAction(undefined);
+  const [authorColor, setAuthorColor] =
+    useStateMutationAction("rgba(13,26,38,1)");
   const cardContentOnMouseEnter = () => {
     setCardContentBackgroundColor("#00000008");
   };
   const cardContentOnMouseLeave = () => {
     setCardContentBackgroundColor("transparent");
   };
+  const authorOnMouseEnter = () => {
+    setAuthorColor("blue");
+  };
+  const authorOnMouseLeave = () => {
+    setAuthorColor("black");
+  };
   return (
     <Flex
       gap="16px"
       direction="column"
-      width="479px"
-      height="162px"
+      width="578px"
+      height="160px"
       position="relative"
       padding="16px 16px 16px 16px"
       backgroundColor="rgba(255,255,255,1)"
@@ -36,7 +44,7 @@ export default function CommentCard(props) {
     >
       <Flex
         padding="0px 0px 0px 0px"
-        width="445px"
+        width="552px"
         height="132px"
         shrink="0"
         position="relative"
@@ -55,7 +63,7 @@ export default function CommentCard(props) {
           top="0px"
           left="0px"
           direction="row"
-          width="445px"
+          width="552px"
           height="88px"
           alignItems="flex-start"
           padding="0px 0px 0px 0px"
@@ -74,10 +82,9 @@ export default function CommentCard(props) {
           <Flex
             gap="8px"
             direction="column"
-            width="349px"
-            grow="1"
-            basis="349px"
-            height="80px"
+            width="442px"
+            height="88px"
+            shrink="0"
             position="relative"
             padding="0px 0px 0px 0px"
             {...getOverrideProps(overrides, "Frame29766879")}
@@ -96,7 +103,7 @@ export default function CommentCard(props) {
               <Flex
                 gap="16px"
                 direction="row"
-                width="fit-content"
+                width="396px"
                 alignItems="flex-start"
                 shrink="0"
                 height="24px"
@@ -108,13 +115,15 @@ export default function CommentCard(props) {
                   fontFamily="Inter"
                   fontSize="16px"
                   fontWeight="400"
-                  color="rgba(13,26,38,1)"
+                  color={authorColor}
                   lineHeight="24px"
                   textAlign="left"
                   display="flex"
                   direction="column"
                   justifyContent="flex-start"
+                  textDecoration="underline"
                   letterSpacing="0.01px"
+                  width="122px"
                   shrink="0"
                   position="relative"
                   padding="0px 0px 0px 0px"
@@ -122,6 +131,12 @@ export default function CommentCard(props) {
                   as="a"
                   href={`${"/users/"}${user?.id}`}
                   children={user?.name}
+                  onMouseEnter={() => {
+                    authorOnMouseEnter();
+                  }}
+                  onMouseLeave={() => {
+                    authorOnMouseLeave();
+                  }}
                   {...getOverrideProps(overrides, "Author")}
                 ></Text>
                 <Text
@@ -135,6 +150,7 @@ export default function CommentCard(props) {
                   direction="column"
                   justifyContent="flex-start"
                   letterSpacing="0.01px"
+                  width="140px"
                   shrink="0"
                   position="relative"
                   padding="0px 0px 0px 0px"
@@ -153,6 +169,7 @@ export default function CommentCard(props) {
                   direction="column"
                   justifyContent="flex-start"
                   letterSpacing="0.01px"
+                  width="122px"
                   shrink="0"
                   position="relative"
                   padding="0px 0px 0px 0px"
@@ -164,18 +181,17 @@ export default function CommentCard(props) {
               <Flex
                 gap="0"
                 direction="row"
-                width="111px"
+                width="34px"
                 justifyContent="flex-end"
                 alignItems="flex-start"
-                grow="1"
-                basis="111px"
+                shrink="0"
                 height="24px"
                 position="relative"
                 padding="0px 0px 0px 0px"
                 {...getOverrideProps(overrides, "Frame29766885")}
               >
                 <MyIcon
-                  width="24px"
+                  width="20px"
                   height="24px"
                   shrink="0"
                   overflow="hidden"
