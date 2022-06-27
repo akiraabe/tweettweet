@@ -34,8 +34,8 @@ export default function CommentCard(props) {
     <Flex
       gap="16px"
       direction="column"
-      width="578px"
-      height="160px"
+      width="669px"
+      height="166px"
       position="relative"
       padding="16px 16px 16px 16px"
       backgroundColor="rgba(255,255,255,1)"
@@ -44,7 +44,7 @@ export default function CommentCard(props) {
     >
       <Flex
         padding="0px 0px 0px 0px"
-        width="552px"
+        width="643px"
         height="132px"
         shrink="0"
         position="relative"
@@ -63,8 +63,8 @@ export default function CommentCard(props) {
           top="0px"
           left="0px"
           direction="row"
-          width="552px"
-          height="88px"
+          width="643px"
+          height="106px"
           alignItems="flex-start"
           padding="0px 0px 0px 0px"
           {...getOverrideProps(overrides, "Body")}
@@ -82,8 +82,8 @@ export default function CommentCard(props) {
           <Flex
             gap="8px"
             direction="column"
-            width="442px"
-            height="88px"
+            width="541px"
+            height="99px"
             shrink="0"
             position="relative"
             padding="0px 0px 0px 0px"
@@ -103,10 +103,10 @@ export default function CommentCard(props) {
               <Flex
                 gap="16px"
                 direction="row"
-                width="396px"
+                width="502px"
+                height="24px"
                 alignItems="flex-start"
                 shrink="0"
-                height="24px"
                 position="relative"
                 padding="0px 0px 0px 0px"
                 {...getOverrideProps(overrides, "Frame29766881")}
@@ -123,7 +123,7 @@ export default function CommentCard(props) {
                   justifyContent="flex-start"
                   textDecoration="underline"
                   letterSpacing="0.01px"
-                  width="122px"
+                  width="178px"
                   shrink="0"
                   position="relative"
                   padding="0px 0px 0px 0px"
@@ -141,7 +141,7 @@ export default function CommentCard(props) {
                 ></Text>
                 <Text
                   fontFamily="Inter"
-                  fontSize="16px"
+                  fontSize="14px"
                   fontWeight="400"
                   color="rgba(92,103,112,1)"
                   lineHeight="24px"
@@ -149,7 +149,7 @@ export default function CommentCard(props) {
                   display="flex"
                   direction="column"
                   justifyContent="flex-start"
-                  letterSpacing="0.01px"
+                  letterSpacing="0px"
                   width="140px"
                   shrink="0"
                   position="relative"
@@ -160,7 +160,7 @@ export default function CommentCard(props) {
                 ></Text>
                 <Text
                   fontFamily="Inter"
-                  fontSize="16px"
+                  fontSize="14px"
                   fontWeight="400"
                   color="rgba(92,102,112,1)"
                   lineHeight="24px"
@@ -168,8 +168,8 @@ export default function CommentCard(props) {
                   display="flex"
                   direction="column"
                   justifyContent="flex-start"
-                  letterSpacing="0.01px"
-                  width="122px"
+                  letterSpacing="0px"
+                  width="167px"
                   shrink="0"
                   position="relative"
                   padding="0px 0px 0px 0px"
@@ -181,11 +181,11 @@ export default function CommentCard(props) {
               <Flex
                 gap="0"
                 direction="row"
-                width="34px"
+                width="30px"
+                height="18px"
                 justifyContent="flex-end"
                 alignItems="flex-start"
                 shrink="0"
-                height="24px"
                 position="relative"
                 padding="0px 0px 0px 0px"
                 {...getOverrideProps(overrides, "Frame29766885")}
