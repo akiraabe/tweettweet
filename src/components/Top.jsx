@@ -153,7 +153,7 @@ function Top({ cognitoUser }) {
 
 const styles = {
   container: {
-    width: 450,
+    width: 750,
     margin: '0 auto',
     display: 'flex',
     flexDirection: 'column',
