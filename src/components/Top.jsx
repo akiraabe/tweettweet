@@ -3,10 +3,8 @@ import { DataStore, Predicates, SortDirection } from 'aws-amplify';
 import { Like, Post } from '../models';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
-import { CommentCard } from '../ui-components';
-import { Collection } from '@aws-amplify/ui-react';
-import { Box, Fab } from '@mui/material';
-import AddIcon from '@mui/icons-material/Add';
+import { AddButton, CommentCardNew } from '../ui-components';
+import { Collection, useBreakpointValue } from '@aws-amplify/ui-react';
 import { useNavigate } from 'react-router-dom';
 
 function Top({ cognitoUser }) {
@@ -22,7 +20,7 @@ function Top({ cognitoUser }) {
 
   const getPosts = async () => {
     const data = await DataStore.query(Post, Predicates.ALL, {
-      sort: s => s.postedAt(SortDirection.DESCENDING)
+      sort: (s) => s.postedAt(SortDirection.DESCENDING),
     });
     setPosts(data);
     // console.log(data);
@@ -44,21 +42,25 @@ function Top({ cognitoUser }) {
     // console.log('like...');
     // console.log(like[0]);
     return like;
-  }
+  };
+
+  const variant = useBreakpointValue({
+    small: 'small',
+    medium: 'default',
+  });
 
   // postedAtの編集メソッド
   const formatDate = (date) => {
     return moment(date).format('YYYY/MM/DD HH:mm');
-  }
+  };
   return (
-    <div style={styles.container}>
-      <div style={styles.boxContainer}>
-        <Box sx={{ '& > :no(style)': { m: 1 } }}>
-          <Fab size='small' color='primary' aria-label='add'>
-            <AddIcon onClick={handleClick} />
-          </Fab>
-        </Box>
-      </div>
+    // <div style={styles.container}>
+    <div>
+      <AddButton
+        overrides={{
+          AddButton: { onClick: handleClick },
+        }}
+      />
       <Collection
         type='list'
         isSearchable={true}
@@ -70,7 +72,9 @@ function Top({ cognitoUser }) {
         items={posts || []}
       >
         {(post, index) => (
-          <CommentCard
+          <CommentCardNew
+            width='100vw'
+            variation={variant}
             post={post}
             key={post.id}
             user={post.User}
@@ -78,7 +82,7 @@ function Top({ cognitoUser }) {
               Timestamp: {
                 children: formatDate(post.postedAt),
               },
-              Share: {
+              MyIcon: {
                 onClick: async (e) => {
                   e.preventDefault();
 
@@ -153,7 +157,7 @@ function Top({ cognitoUser }) {
 
 const styles = {
   container: {
-    width: 750,
+    width: 415,
     margin: '0 auto',
     display: 'flex',
     flexDirection: 'column',

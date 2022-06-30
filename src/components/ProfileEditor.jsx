@@ -106,6 +106,7 @@ export const ProfileEditor = ({ cognitoUser }) => {
               User.copyOf(user, (updated) => {
                 updated.name = textFieldNameValue || user.name;
                 updated.handle = textFieldHandleValue || user.handle;
+                updated.jobPosition = textFieldJobPositionValue || user.jobPosition;
                 updated.bio = textFieldBioValue || user.bio;
               })
             );

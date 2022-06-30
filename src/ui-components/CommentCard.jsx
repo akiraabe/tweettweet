@@ -34,8 +34,8 @@ export default function CommentCard(props) {
     <Flex
       gap="16px"
       direction="column"
-      width="669px"
-      height="166px"
+      width="689px"
+      height="164px"
       position="relative"
       padding="16px 16px 16px 16px"
       backgroundColor="rgba(255,255,255,1)"
@@ -44,8 +44,8 @@ export default function CommentCard(props) {
     >
       <Flex
         padding="0px 0px 0px 0px"
-        width="643px"
-        height="132px"
+        width="658px"
+        height="130px"
         shrink="0"
         position="relative"
         backgroundColor={cardContentBackgroundColor}
@@ -63,8 +63,8 @@ export default function CommentCard(props) {
           top="0px"
           left="0px"
           direction="row"
-          width="643px"
-          height="106px"
+          width="658px"
+          height="104.39px"
           alignItems="flex-start"
           padding="0px 0px 0px 0px"
           {...getOverrideProps(overrides, "Body")}
@@ -84,6 +84,7 @@ export default function CommentCard(props) {
             direction="column"
             width="541px"
             height="99px"
+            justifyContent="space-between"
             shrink="0"
             position="relative"
             padding="0px 0px 0px 0px"
@@ -230,11 +231,11 @@ export default function CommentCard(props) {
         <Flex
           gap="80px"
           position="absolute"
-          top="105.6px"
+          top="104px"
           left="0px"
           direction="row"
-          width="445px"
-          height="26.4px"
+          width="455.38px"
+          height="26px"
           alignItems="flex-start"
           padding="0px 0px 0px 0px"
           {...getOverrideProps(overrides, "Share")}
