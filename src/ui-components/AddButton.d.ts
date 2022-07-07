@@ -6,8 +6,8 @@
 
 import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { IconProps } from "@aws-amplify/ui-react";
-export declare type AddButtonProps = React.PropsWithChildren<Partial<IconProps> & {
+import { ViewProps } from "@aws-amplify/ui-react";
+export declare type AddButtonProps = React.PropsWithChildren<Partial<ViewProps> & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
 export default function AddButton(props: AddButtonProps): React.ReactElement;

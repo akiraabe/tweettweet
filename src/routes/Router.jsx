@@ -10,6 +10,8 @@ const Profile = lazy(() => import('../components/Profile'));
 const ProfileEditor = lazy(() => import('../components/ProfileEditor'));
 const ProfileRegister = lazy(() => import('../components/ProfileRegister'));
 const NavBar = lazy(() => import('../ui-components/NavBar'));
+const FileUploader = lazy(() =>  import('../components/FileUploader'));
+// const TopImage2 = lazy(() => import('../ui-components/TopImage2'));
 
 /**
  * responsive design
@@ -26,6 +28,7 @@ export const Router = ({ cognitoUser }) => {
       <Suspense fallback={<Loading />}>
         <Routes>
           {/* <NavBar width='100vw' variation={variant}/> */}
+          {/* <Route path="/topimage2" width='100vw' element={<TopImage2 />} /> */}
           <Route
             path='/navbar'
             element={<NavBar width='100vw' variation={variant} />}
@@ -37,7 +40,7 @@ export const Router = ({ cognitoUser }) => {
             path='/newProfile'
             element={<ProfileRegister cognitoUser={cognitoUser} />}
           />
-          {/* <Route path='/newProfile' element={<FileUploader />} /> */}
+          <Route path='/upload' element={<FileUploader />} />
           <Route path='/form' element={<Form cognitoUser={cognitoUser} />} />
           <Route path='/users' element={<ProfileCollection />} />
           <Route path='/users/:userId' element={<Profile />} />

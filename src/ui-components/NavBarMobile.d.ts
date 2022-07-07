@@ -6,12 +6,8 @@
 
 import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { Post, User } from "../models";
 import { ViewProps } from "@aws-amplify/ui-react";
-export declare type CommentCardNewProps = React.PropsWithChildren<Partial<ViewProps> & {
-    user?: User;
-    post?: Post;
-} & {
+export declare type NavBarMobileProps = React.PropsWithChildren<Partial<ViewProps> & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function CommentCardNew(props: CommentCardNewProps): React.ReactElement;
+export default function NavBarMobile(props: NavBarMobileProps): React.ReactElement;

@@ -6,12 +6,14 @@
 
 import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { Post, User } from "../models";
-import { FlexProps } from "@aws-amplify/ui-react";
-export declare type CommentCardbakProps = React.PropsWithChildren<Partial<FlexProps> & {
-    post?: Post;
-    user?: User;
+import { CollectionProps } from "@aws-amplify/ui-react";
+export declare type EditProfileCollectionProps = React.PropsWithChildren<Partial<CollectionProps<any>> & {
+    items?: any[];
+    overrideItems?: ({ item: any, index: number }: {
+        item: any;
+        index: any;
+    }) => Record<string, string>;
 } & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function CommentCardbak(props: CommentCardbakProps): React.ReactElement;
+export default function EditProfileCollection(props: EditProfileCollectionProps): React.ReactElement;
