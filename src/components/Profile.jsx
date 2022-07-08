@@ -26,6 +26,7 @@ export const Profile = () => {
   return (
     <>
       <ProfileCard
+        width='100vw'
         user={user}
         overrides={{
           Button: {

@@ -25,6 +25,7 @@ export const Form = ({ cognitoUser }) => {
   return (
     <>
       <CommentForm
+        width='100vw'
         user={user}
         overrides={{
           TextField: {
@@ -44,7 +45,7 @@ export const Form = ({ cognitoUser }) => {
                   content: textFieldValue,
                   likes: 0,
                   postUserId: user.id,
-                  postedAt: moment().toISOString()
+                  postedAt: moment().toISOString(),
                 })
               );
               // Top画面へ遷移する

@@ -15,7 +15,7 @@ export default function ProfileCard(props) {
     <Flex
       gap="24px"
       direction="column"
-      width="320px"
+      width="310px"
       alignItems="center"
       position="relative"
       padding="24px 24px 24px 24px"

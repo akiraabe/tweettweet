@@ -27,7 +27,7 @@ export default function EditProfile(props) {
     <Flex
       gap="16px"
       direction="column"
-      width="640px"
+      width="502px"
       position="relative"
       padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"

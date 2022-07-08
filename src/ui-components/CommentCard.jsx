@@ -13,7 +13,7 @@ export default function CommentCard(props) {
   const { user, post, overrides, ...rest } = props;
   return (
     <View
-      width="356px"
+      width="434px"
       height="171px"
       position="relative"
       padding="0px 0px 0px 0px"
@@ -85,7 +85,7 @@ export default function CommentCard(props) {
             direction="column"
             justifyContent="flex-start"
             letterSpacing="0px"
-            width="88px"
+            width="139px"
             position="absolute"
             top="7px"
             right="20px"

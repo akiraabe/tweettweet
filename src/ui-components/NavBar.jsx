@@ -53,7 +53,7 @@ export default function NavBar(props) {
     <Flex
       gap="14px"
       direction="row"
-      width="558px"
+      width="429px"
       height="40px"
       justifyContent="space-between"
       alignItems="center"

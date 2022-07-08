@@ -2,7 +2,7 @@ import { DataStore } from 'aws-amplify';
 import { User } from '../models';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-
+import { useBreakpointValue } from '@aws-amplify/ui-react';
 import EditProfile from '../ui-components/EditProfile';
 
 export const ProfileEditor = ({ cognitoUser }) => {
@@ -31,10 +31,15 @@ export const ProfileEditor = ({ cognitoUser }) => {
   useEffect(() => {
     getUser();
   }, []);
-
+  const variant = useBreakpointValue({
+    small: '375px',
+    medium: '700px',
+  });
   if (!isLoginUser) {
     return (
       <EditProfile
+        width='100vw'
+        // variation={variant}
         user={user}
         overrides={{
           Icon: {
@@ -61,6 +66,7 @@ export const ProfileEditor = ({ cognitoUser }) => {
   }
   return (
     <EditProfile
+      width='100vw'
       user={user}
       overrides={{
         Icon: {
