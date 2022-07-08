@@ -14,10 +14,10 @@ import {
 } from "@aws-amplify/ui-react/internal";
 import { Flex, Icon, Text, View } from "@aws-amplify/ui-react";
 export default function NavBar(props) {
-  const { like, overrides, ...rest } = props;
+  const { overrides, ...rest } = props;
   const [postsColor, setPostsColor] = useStateMutationAction("rgba(0,0,0,1)");
   const [usersColor, setUsersColor] = useStateMutationAction("rgba(0,0,0,1)");
-  const [newprofileColor, setNewprofileColor] =
+  const [profileColor, setProfileColor] =
     useStateMutationAction("rgba(0,0,0,1)");
   const [signOutColor, setSignOutColor] =
     useStateMutationAction("rgba(0,0,0,1)");
@@ -35,15 +35,12 @@ export default function NavBar(props) {
   const usersOnMouseLeave = () => {
     setUsersColor("black");
   };
-  const newprofileOnClick = useNavigateAction({
-    type: "url",
-    url: "/newProfile",
-  });
-  const newprofileOnMouseEnter = () => {
-    setNewprofileColor("blue");
+  const profileOnClick = useNavigateAction({ type: "url", url: "/newProfile" });
+  const profileOnMouseEnter = () => {
+    setProfileColor("blue");
   };
-  const newprofileOnMouseLeave = () => {
-    setNewprofileColor("black");
+  const profileOnMouseLeave = () => {
+    setProfileColor("black");
   };
   const signOutOnClick = useAuthSignOutAction({ global: false });
   const signOutOnMouseEnter = () => {
@@ -54,27 +51,22 @@ export default function NavBar(props) {
   };
   return (
     <Flex
-      gap="20px"
+      gap="14px"
       direction="row"
-      width="1444px"
-      height="67px"
-      justifyContent="center"
+      width="558px"
+      height="40px"
+      justifyContent="space-between"
       alignItems="center"
       position="relative"
-      padding="24px 32px 24px 32px"
-      backgroundColor="rgba(255,255,255,1)"
+      padding="24px 152px 24px 4px"
+      backgroundColor="rgba(219,213,213,1)"
       {...rest}
       {...getOverrideProps(overrides, "NavBar")}
     >
-      <Flex
-        gap="2px"
-        direction="row"
-        width="fit-content"
-        height="19px"
-        justifyContent="center"
-        alignItems="center"
+      <View
+        width="103px"
+        height="27px"
         shrink="0"
-        alignSelf="stretch"
         position="relative"
         padding="0px 0px 0px 0px"
         {...getOverrideProps(overrides, "Logo")}
@@ -90,152 +82,184 @@ export default function NavBar(props) {
               fillRule: "nonzero",
             },
           ]}
-          shrink="0"
-          position="relative"
+          position="absolute"
+          top="4.5px"
+          left="1px"
           {...getOverrideProps(overrides, "Star 1")}
         ></Icon>
         <Text
           fontFamily="Inter"
-          fontSize="20px"
+          fontSize="14px"
           fontWeight="400"
           color="rgba(0,0,0,1)"
           textTransform="capitalize"
-          lineHeight="23.4375px"
+          lineHeight="16.40625px"
           textAlign="left"
           display="flex"
           direction="column"
           justifyContent="flex-start"
-          shrink="0"
-          position="relative"
+          position="absolute"
+          top="4px"
+          left="19px"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="Twetwe"
           {...getOverrideProps(overrides, "Twetwe")}
         ></Text>
-      </Flex>
-      <Flex
-        gap="40px"
-        direction="row"
-        width="1043px"
-        alignItems="center"
-        grow="1"
-        basis="1043px"
+      </View>
+      <View
+        width="169px"
         height="24px"
+        shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
         {...getOverrideProps(overrides, "FrameLeft")}
       >
-        <Text
-          fontFamily="Inter"
-          fontSize="16px"
-          fontWeight="400"
-          color={postsColor}
-          lineHeight="24px"
-          textAlign="left"
-          display="flex"
-          direction="column"
-          justifyContent="flex-start"
-          textDecoration="underline"
-          letterSpacing="0.01px"
-          shrink="0"
-          position="relative"
+        <View
+          width="43px"
+          height="24px"
+          position="absolute"
+          top="0px"
+          left="0px"
           padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children="Posts"
-          onClick={() => {
-            postsOnClick();
-          }}
-          onMouseEnter={() => {
-            postsOnMouseEnter();
-          }}
-          onMouseLeave={() => {
-            postsOnMouseLeave();
-          }}
-          {...getOverrideProps(overrides, "Posts")}
-        ></Text>
-        <Text
-          fontFamily="Inter"
-          fontSize="16px"
-          fontWeight="400"
-          color={usersColor}
-          lineHeight="24px"
-          textAlign="left"
-          display="flex"
-          direction="column"
-          justifyContent="flex-start"
-          textDecoration="underline"
-          letterSpacing="0.01px"
-          shrink="0"
-          position="relative"
+          {...getOverrideProps(overrides, "Frame 1")}
+        >
+          <Text
+            fontFamily="Inter"
+            fontSize="14px"
+            fontWeight="400"
+            color={postsColor}
+            lineHeight="24px"
+            textAlign="left"
+            display="flex"
+            direction="column"
+            justifyContent="center"
+            textDecoration="underline"
+            letterSpacing="0px"
+            position="absolute"
+            top="0px"
+            left="0px"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="Posts"
+            onClick={() => {
+              postsOnClick();
+            }}
+            onMouseEnter={() => {
+              postsOnMouseEnter();
+            }}
+            onMouseLeave={() => {
+              postsOnMouseLeave();
+            }}
+            {...getOverrideProps(overrides, "Posts")}
+          ></Text>
+        </View>
+        <View
+          width="45px"
+          height="24px"
+          position="absolute"
+          top="0px"
+          left="59px"
           padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children="Users"
-          onClick={() => {
-            usersOnClick();
-          }}
-          onMouseEnter={() => {
-            usersOnMouseEnter();
-          }}
-          onMouseLeave={() => {
-            usersOnMouseLeave();
-          }}
-          {...getOverrideProps(overrides, "Users")}
-        ></Text>
-        <Text
-          fontFamily="Inter"
-          fontSize="16px"
-          fontWeight="400"
-          color={newprofileColor}
-          lineHeight="24px"
-          textAlign="left"
-          display="flex"
-          direction="column"
-          justifyContent="flex-start"
-          textDecoration="underline"
-          letterSpacing="0.01px"
-          shrink="0"
-          position="relative"
+          {...getOverrideProps(overrides, "Frame 2")}
+        >
+          <Text
+            fontFamily="Inter"
+            fontSize="14px"
+            fontWeight="400"
+            color={usersColor}
+            lineHeight="24px"
+            textAlign="left"
+            display="flex"
+            direction="column"
+            justifyContent="center"
+            textDecoration="underline"
+            letterSpacing="0px"
+            position="absolute"
+            top="0px"
+            left="0px"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="Users"
+            onClick={() => {
+              usersOnClick();
+            }}
+            onMouseEnter={() => {
+              usersOnMouseEnter();
+            }}
+            onMouseLeave={() => {
+              usersOnMouseLeave();
+            }}
+            {...getOverrideProps(overrides, "Users")}
+          ></Text>
+        </View>
+        <View
+          width="55px"
+          height="24px"
+          position="absolute"
+          top="0px"
+          left="120px"
           padding="0px 0px 0px 0px"
-          whiteSpace="pre-wrap"
-          children="New profile"
-          onClick={() => {
-            newprofileOnClick();
-          }}
-          onMouseEnter={() => {
-            newprofileOnMouseEnter();
-          }}
-          onMouseLeave={() => {
-            newprofileOnMouseLeave();
-          }}
-          {...getOverrideProps(overrides, "New profile")}
-        ></Text>
-      </Flex>
-      <View
-        width="200px"
-        height="34px"
+          {...getOverrideProps(overrides, "Frame 3")}
+        >
+          <Text
+            fontFamily="Inter"
+            fontSize="14px"
+            fontWeight="400"
+            color={profileColor}
+            lineHeight="24px"
+            textAlign="left"
+            display="flex"
+            direction="column"
+            justifyContent="center"
+            textDecoration="underline"
+            letterSpacing="0px"
+            position="absolute"
+            top="0px"
+            left="0px"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children="Profile"
+            onClick={() => {
+              profileOnClick();
+            }}
+            onMouseEnter={() => {
+              profileOnMouseEnter();
+            }}
+            onMouseLeave={() => {
+              profileOnMouseLeave();
+            }}
+            {...getOverrideProps(overrides, "Profile")}
+          ></Text>
+        </View>
+      </View>
+      <Flex
+        gap="10px"
+        direction="row"
+        width="fit-content"
+        height="24px"
+        alignItems="flex-start"
         shrink="0"
-        overflow="hidden"
         position="relative"
-        padding="0px 0px 0px 0px"
+        padding="4px 38px 4px 38px"
         {...getOverrideProps(overrides, "FrameRight")}
       >
         <Text
           fontFamily="Inter"
-          fontSize="16px"
+          fontSize="14px"
           fontWeight="400"
           color={signOutColor}
           lineHeight="24px"
           textAlign="left"
           display="flex"
           direction="column"
-          justifyContent="flex-start"
+          justifyContent="center"
           textDecoration="underline"
-          letterSpacing="0.01px"
-          width="66px"
-          height="14px"
-          position="absolute"
-          top="3.5px"
-          left="100px"
+          letterSpacing="0px"
+          width="56px"
+          height="24px"
+          shrink="0"
+          position="relative"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="SignOut"
@@ -250,7 +274,7 @@ export default function NavBar(props) {
           }}
           {...getOverrideProps(overrides, "SignOut")}
         ></Text>
-      </View>
+      </Flex>
     </Flex>
   );
 }

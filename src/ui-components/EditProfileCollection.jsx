@@ -6,29 +6,39 @@
 
 /* eslint-disable */
 import React from "react";
-import CommentCard from "./CommentCard";
-import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import { User } from "../models";
+import {
+  getOverrideProps,
+  useDataStoreBinding,
+} from "@aws-amplify/ui-react/internal";
+import EditProfile from "./EditProfile";
 import { Collection } from "@aws-amplify/ui-react";
-export default function CommentCardCollection(props) {
-  const { items, overrideItems, overrides, ...rest } = props;
+export default function EditProfileCollection(props) {
+  const { items: itemsProp, overrideItems, overrides, ...rest } = props;
+  const itemsDataStore = useDataStoreBinding({
+    type: "collection",
+    model: User,
+  }).items;
+  const items = itemsProp !== undefined ? itemsProp : itemsDataStore;
   return (
     <Collection
-      type="list"
-      isSearchable={true}
+      type="grid"
       isPaginated={true}
       searchPlaceholder="Search..."
-      itemsPerPage={6}
-      direction="column"
+      templateColumns="1fr 1fr"
+      autoFlow="row"
+      alignItems="stretch"
       justifyContent="stretch"
       items={items || []}
       {...rest}
-      {...getOverrideProps(overrides, "CommentCardCollection")}
+      {...getOverrideProps(overrides, "EditProfileCollection")}
     >
       {(item, index) => (
-        <CommentCard
+        <EditProfile
+          user={item}
           key={item.id}
           {...(overrideItems && overrideItems({ item, index }))}
-        ></CommentCard>
+        ></EditProfile>
       )}
     </Collection>
   );

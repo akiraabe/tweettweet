@@ -201,21 +201,6 @@ export default function MyIcon(props) {
         MyIcon: {
           paths: [
             {
-              d: "M10 18.35L8.55 17.03C3.4 12.36 0 9.28 0 5.5C0 2.42 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.09C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.42 20 5.5C20 9.28 16.6 12.36 11.45 17.04L10 18.35Z",
-              fill: "rgba(13,26,38,1)",
-              fillRule: "nonzero",
-              style: { transform: "translate(8.33%, 12.5%)" },
-            },
-          ],
-        },
-      },
-      variantValues: { type: "favorite" },
-    },
-    {
-      overrides: {
-        MyIcon: {
-          paths: [
-            {
               d: "M6.59 5.17L1.41 0L0 1.41L5.17 6.58L6.59 5.17ZM10.5 0L12.54 2.04L0 14.59L1.41 16L13.96 3.46L16 5.5L16 0L10.5 0ZM10.83 9.41L9.42 10.82L12.55 13.95L10.5 16L16 16L16 10.5L13.96 12.54L10.83 9.41L10.83 9.41Z",
               fill: "rgba(13,26,38,1)",
               fillRule: "nonzero",
@@ -300,6 +285,21 @@ export default function MyIcon(props) {
         },
       },
       variantValues: { type: "delete" },
+    },
+    {
+      overrides: {
+        MyIcon: {
+          paths: [
+            {
+              d: "M10 18.35L8.55 17.03C3.4 12.36 0 9.28 0 5.5C0 2.42 2.42 0 5.5 0C7.24 0 8.91 0.81 10 2.09C11.09 0.81 12.76 0 14.5 0C17.58 0 20 2.42 20 5.5C20 9.28 16.6 12.36 11.45 17.04L10 18.35Z",
+              fill: "rgba(13,26,38,1)",
+              fillRule: "nonzero",
+              style: { transform: "translate(8.33%, 12.5%)" },
+            },
+          ],
+        },
+      },
+      variantValues: { type: "favorite" },
     },
   ];
   const overrides = mergeVariantsAndOverrides(

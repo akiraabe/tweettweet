@@ -6,265 +6,159 @@
 
 /* eslint-disable */
 import React from "react";
-import {
-  getOverrideProps,
-  useStateMutationAction,
-} from "@aws-amplify/ui-react/internal";
-import { Flex, Image, Text } from "@aws-amplify/ui-react";
+import { getOverrideProps } from "@aws-amplify/ui-react/internal";
+import { Image, Text, View } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
 export default function CommentCard(props) {
-  const { post, user, overrides, ...rest } = props;
-  const [cardContentBackgroundColor, setCardContentBackgroundColor] =
-    useStateMutationAction(undefined);
-  const cardContentOnMouseEnter = () => {
-    setCardContentBackgroundColor("#00000008");
-  };
-  const cardContentOnMouseLeave = () => {
-    setCardContentBackgroundColor("transparent");
-  };
+  const { user, post, overrides, ...rest } = props;
   return (
-    <Flex
-      gap="16px"
-      direction="column"
-      width="479px"
-      height="162px"
+    <View
+      width="356px"
+      height="171px"
       position="relative"
-      padding="16px 16px 16px 16px"
+      padding="0px 0px 0px 0px"
       backgroundColor="rgba(255,255,255,1)"
       {...rest}
       {...getOverrideProps(overrides, "CommentCard")}
     >
-      <Flex
+      <View
+        height="126px"
+        position="absolute"
+        top="16px"
+        left="16px"
+        right="28px"
         padding="0px 0px 0px 0px"
-        width="445px"
-        height="132px"
-        shrink="0"
-        position="relative"
-        backgroundColor={cardContentBackgroundColor}
-        onMouseEnter={() => {
-          cardContentOnMouseEnter();
-        }}
-        onMouseLeave={() => {
-          cardContentOnMouseLeave();
-        }}
-        {...getOverrideProps(overrides, "CardContent")}
+        {...getOverrideProps(overrides, "Body")}
       >
-        <Flex
-          gap="16px"
+        <Image
+          width="80px"
+          height="80px"
           position="absolute"
           top="0px"
           left="0px"
-          direction="row"
-          width="445px"
-          height="88px"
-          alignItems="flex-start"
+          borderRadius="64px"
           padding="0px 0px 0px 0px"
-          {...getOverrideProps(overrides, "Body")}
-        >
-          <Image
-            width="80px"
-            height="80px"
-            shrink="0"
-            position="relative"
-            borderRadius="64px"
-            padding="0px 0px 0px 0px"
-            src={user?.profilePic}
-            {...getOverrideProps(overrides, "image")}
-          ></Image>
-          <Flex
-            gap="8px"
-            direction="column"
-            width="349px"
-            grow="1"
-            basis="349px"
-            height="80px"
-            position="relative"
-            padding="0px 0px 0px 0px"
-            {...getOverrideProps(overrides, "Frame29766879")}
-          >
-            <Flex
-              gap="16px"
-              direction="row"
-              alignItems="flex-start"
-              shrink="0"
-              alignSelf="stretch"
-              objectFit="cover"
-              position="relative"
-              padding="0px 0px 0px 0px"
-              {...getOverrideProps(overrides, "Frame29766880")}
-            >
-              <Flex
-                gap="16px"
-                direction="row"
-                width="fit-content"
-                alignItems="flex-start"
-                shrink="0"
-                height="24px"
-                position="relative"
-                padding="0px 0px 0px 0px"
-                {...getOverrideProps(overrides, "Frame29766881")}
-              >
-                <Text
-                  fontFamily="Inter"
-                  fontSize="16px"
-                  fontWeight="400"
-                  color="rgba(13,26,38,1)"
-                  lineHeight="24px"
-                  textAlign="left"
-                  display="flex"
-                  direction="column"
-                  justifyContent="flex-start"
-                  letterSpacing="0.01px"
-                  shrink="0"
-                  position="relative"
-                  padding="0px 0px 0px 0px"
-                  whiteSpace="pre-wrap"
-                  as="a"
-                  href={`${"/users/"}${user?.id}`}
-                  children={user?.name}
-                  {...getOverrideProps(overrides, "Author")}
-                ></Text>
-                <Text
-                  fontFamily="Inter"
-                  fontSize="16px"
-                  fontWeight="400"
-                  color="rgba(92,103,112,1)"
-                  lineHeight="24px"
-                  textAlign="left"
-                  display="flex"
-                  direction="column"
-                  justifyContent="flex-start"
-                  letterSpacing="0.01px"
-                  shrink="0"
-                  position="relative"
-                  padding="0px 0px 0px 0px"
-                  whiteSpace="pre-wrap"
-                  children={`${"@"}${user?.handle}`}
-                  {...getOverrideProps(overrides, "handle")}
-                ></Text>
-                <Text
-                  fontFamily="Inter"
-                  fontSize="16px"
-                  fontWeight="400"
-                  color="rgba(92,102,112,1)"
-                  lineHeight="24px"
-                  textAlign="left"
-                  display="flex"
-                  direction="column"
-                  justifyContent="flex-start"
-                  letterSpacing="0.01px"
-                  shrink="0"
-                  position="relative"
-                  padding="0px 0px 0px 0px"
-                  whiteSpace="pre-wrap"
-                  children={post?.postedAt}
-                  {...getOverrideProps(overrides, "Timestamp")}
-                ></Text>
-              </Flex>
-              <Flex
-                gap="0"
-                direction="row"
-                width="111px"
-                justifyContent="flex-end"
-                alignItems="flex-start"
-                grow="1"
-                basis="111px"
-                height="24px"
-                position="relative"
-                padding="0px 0px 0px 0px"
-                {...getOverrideProps(overrides, "Frame29766885")}
-              >
-                <MyIcon
-                  width="24px"
-                  height="24px"
-                  shrink="0"
-                  overflow="hidden"
-                  position="relative"
-                  padding="0px 0px 0px 0px"
-                  type="more_horiz"
-                  {...getOverrideProps(overrides, "MyIcon29766886")}
-                ></MyIcon>
-              </Flex>
-            </Flex>
-            <Text
-              fontFamily="Inter"
-              fontSize="16px"
-              fontWeight="400"
-              color="rgba(13,26,38,1)"
-              lineHeight="24px"
-              textAlign="left"
-              display="flex"
-              direction="column"
-              justifyContent="flex-start"
-              letterSpacing="0.01px"
-              shrink="0"
-              alignSelf="stretch"
-              objectFit="cover"
-              position="relative"
-              padding="0px 0px 0px 0px"
-              whiteSpace="pre-wrap"
-              children={post?.content}
-              {...getOverrideProps(
-                overrides,
-                "\u201CLorem ipsum dolor sit amet, consectetur adipiscing elit. \u201D"
-              )}
-            ></Text>
-          </Flex>
-        </Flex>
-        <Flex
-          gap="80px"
+          src={user?.profilePic}
+          {...getOverrideProps(overrides, "image")}
+        ></Image>
+        <View
+          height="139px"
           position="absolute"
-          top="105.6px"
-          left="0px"
-          direction="row"
-          width="445px"
-          height="26.4px"
-          alignItems="flex-start"
+          top="0px"
+          left="90px"
+          right="-5px"
           padding="0px 0px 0px 0px"
-          {...getOverrideProps(overrides, "Share")}
+          {...getOverrideProps(overrides, "Frame")}
         >
-          <Flex
-            gap="16px"
-            direction="row"
-            width="fit-content"
-            alignItems="flex-start"
-            shrink="0"
-            height="24px"
-            position="relative"
+          <Text
+            fontFamily="Inter"
+            fontSize="16px"
+            fontWeight="400"
+            color="rgba(13,26,38,1)"
+            lineHeight="24px"
+            textAlign="left"
+            display="flex"
+            direction="column"
+            justifyContent="flex-start"
+            letterSpacing="0.01px"
+            height="72px"
+            position="absolute"
+            top="45px"
+            left="10px"
+            right="20px"
             padding="0px 0px 0px 0px"
-            {...getOverrideProps(overrides, "Like")}
-          >
-            <MyIcon
-              width="24px"
-              height="24px"
-              shrink="0"
-              overflow="hidden"
-              position="relative"
-              padding="0px 0px 0px 0px"
-              type="favorite_border"
-              {...getOverrideProps(overrides, "MyIcon29766896")}
-            ></MyIcon>
-            <Text
-              fontFamily="Inter"
-              fontSize="16px"
-              fontWeight="400"
-              color="rgba(13,26,38,1)"
-              lineHeight="24px"
-              textAlign="left"
-              display="flex"
-              direction="column"
-              justifyContent="flex-start"
-              letterSpacing="0.01px"
-              shrink="0"
-              position="relative"
-              padding="0px 0px 0px 0px"
-              whiteSpace="pre-wrap"
-              children={post?.likes}
-              {...getOverrideProps(overrides, "99")}
-            ></Text>
-          </Flex>
-        </Flex>
-      </Flex>
-    </Flex>
+            whiteSpace="pre-wrap"
+            children={post?.content}
+            {...getOverrideProps(
+              overrides,
+              "\u201CLorem ipsum dolor sit amet, consectetur adipiscing elit. \u201D"
+            )}
+          ></Text>
+          <Text
+            fontFamily="Inter"
+            fontSize="14px"
+            fontWeight="400"
+            color="rgba(92,102,112,1)"
+            lineHeight="24px"
+            textAlign="left"
+            display="flex"
+            direction="column"
+            justifyContent="flex-start"
+            letterSpacing="0px"
+            width="88px"
+            position="absolute"
+            top="7px"
+            right="20px"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            children={post?.postedAt}
+            {...getOverrideProps(overrides, "Timestamp")}
+          ></Text>
+          <Text
+            fontFamily="Inter"
+            fontSize="14px"
+            fontWeight="400"
+            color="rgba(92,103,112,1)"
+            lineHeight="24px"
+            textAlign="left"
+            display="flex"
+            direction="column"
+            justifyContent="flex-start"
+            letterSpacing="0px"
+            height="24px"
+            position="absolute"
+            top="7px"
+            left="10px"
+            right="131px"
+            padding="0px 0px 0px 0px"
+            whiteSpace="pre-wrap"
+            as="a"
+            href={`${"/users/"}${user?.id}`}
+            children={`${"@"}${user?.handle}`}
+            {...getOverrideProps(overrides, "handle")}
+          ></Text>
+        </View>
+      </View>
+      <View
+        width="61px"
+        height="24px"
+        position="absolute"
+        bottom="7px"
+        left="16px"
+        padding="0px 0px 0px 0px"
+        {...getOverrideProps(overrides, "Like")}
+      >
+        <MyIcon
+          width="24px"
+          height="24px"
+          position="absolute"
+          top="0px"
+          left="0px"
+          overflow="hidden"
+          padding="0px 0px 0px 0px"
+          type="favorite_border"
+          {...getOverrideProps(overrides, "MyIcon")}
+        ></MyIcon>
+        <Text
+          fontFamily="Inter"
+          fontSize="16px"
+          fontWeight="400"
+          color="rgba(13,26,38,1)"
+          lineHeight="24px"
+          textAlign="left"
+          display="flex"
+          direction="column"
+          justifyContent="flex-start"
+          letterSpacing="0.01px"
+          position="absolute"
+          top="0px"
+          left="40px"
+          padding="0px 0px 0px 0px"
+          whiteSpace="pre-wrap"
+          children={post?.likes}
+          {...getOverrideProps(overrides, "99")}
+        ></Text>
+      </View>
+    </View>
   );
 }

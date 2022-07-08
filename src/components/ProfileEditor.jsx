@@ -7,7 +7,7 @@ import EditProfile from '../ui-components/EditProfile';
 
 export const ProfileEditor = ({ cognitoUser }) => {
   const params = useParams();
-  console.log(params);
+  // console.log(params);
   const id = params.userId;
 
   const [user, setUser] = useState(null);
@@ -22,10 +22,10 @@ export const ProfileEditor = ({ cognitoUser }) => {
 
   const getUser = async () => {
     const user = await DataStore.query(User, id);
-    console.log(user);
+    // console.log(user);
     setUser(user);
     setIsLoginUser(user.accountName === cognitoUser.username);
-    console.log('isLoginUser :' + isLoginUser);
+    // console.log('isLoginUser :' + isLoginUser);
   };
 
   useEffect(() => {
@@ -37,6 +37,12 @@ export const ProfileEditor = ({ cognitoUser }) => {
       <EditProfile
         user={user}
         overrides={{
+          Icon: {
+            onClick: (e) => {
+              // console.log('icon was clicked.');
+              navigate('/posts/');
+            }
+          },
           TextFieldName: {
             placeholder: `${user?.name}`,
           },
@@ -57,6 +63,12 @@ export const ProfileEditor = ({ cognitoUser }) => {
     <EditProfile
       user={user}
       overrides={{
+        Icon: {
+          onClick: (e) => {
+            // console.log('icon was clicked.');
+            navigate('/posts/');
+          }
+        },
         TextFieldName: {
           value: textFieldNameValue,
           placeholder: `${user?.name}`,
@@ -87,13 +99,14 @@ export const ProfileEditor = ({ cognitoUser }) => {
         },
         Button: {
           onClick: async (e) => {
-            console.log('button was clicked.');
+            // console.log('button was clicked.');
             e.preventDefault();
             // update
             await DataStore.save(
               User.copyOf(user, (updated) => {
                 updated.name = textFieldNameValue || user.name;
                 updated.handle = textFieldHandleValue || user.handle;
+                updated.jobPosition = textFieldJobPositionValue || user.jobPosition;
                 updated.bio = textFieldBioValue || user.bio;
               })
             );

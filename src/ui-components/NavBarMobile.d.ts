@@ -6,8 +6,8 @@
 
 import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
-import { FlexProps } from "@aws-amplify/ui-react";
-export declare type TallCardProps = React.PropsWithChildren<Partial<FlexProps> & {
+import { ViewProps } from "@aws-amplify/ui-react";
+export declare type NavBarMobileProps = React.PropsWithChildren<Partial<ViewProps> & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
-export default function TallCard(props: TallCardProps): React.ReactElement;
+export default function NavBarMobile(props: NavBarMobileProps): React.ReactElement;

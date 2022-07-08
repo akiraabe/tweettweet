@@ -31,6 +31,12 @@ export const ProfileRegister = ({ cognitoUser }) => {
     <>
       <EditProfile
         overrides={{
+          Icon: {
+            onClick: (e) => {
+              // console.log('icon was clicked.');
+              navigate('/posts/');
+            }
+          },
           TextFieldName: {
             value: textFieldNameValue,
             placeholder: 'input your name',
@@ -61,7 +67,7 @@ export const ProfileRegister = ({ cognitoUser }) => {
           },
           Button: {
             onClick: async (e) => {
-              console.log('button was clicked.');
+              // console.log('button was clicked.');
               e.preventDefault();
               // update
               await DataStore.save(
