@@ -9,6 +9,7 @@ import React from "react";
 import {
   getOverrideProps,
   useNavigateAction,
+  useStateMutationAction,
 } from "@aws-amplify/ui-react/internal";
 import {
   Button,
@@ -22,7 +23,15 @@ import {
 } from "@aws-amplify/ui-react";
 export default function EditProfile(props) {
   const { user, overrides, ...rest } = props;
-  const vectorOnClick = useNavigateAction({ type: "url", url: "" });
+  const [ellipseTwoBackgroundColor, setEllipseTwoBackgroundColor] =
+    useStateMutationAction(undefined);
+  const ellipseTwoOnMouseEnter = () => {
+    setEllipseTwoBackgroundColor("lightgrey");
+  };
+  const ellipseTwoOnMouseLeave = () => {
+    setEllipseTwoBackgroundColor("white");
+  };
+  const vectorOnClick = useNavigateAction({ type: "url", url: "/posts" });
   return (
     <Flex
       gap="16px"
@@ -64,6 +73,23 @@ export default function EditProfile(props) {
             padding="0px 0px 0px 0px"
             {...getOverrideProps(overrides, "Icon")}
           >
+            <Icon
+              width="24px"
+              height="24px"
+              viewBox={{ minX: 0, minY: 0, width: 24, height: 24 }}
+              paths={[]}
+              position="absolute"
+              top="0px"
+              left="0px"
+              backgroundColor={ellipseTwoBackgroundColor}
+              onMouseEnter={() => {
+                ellipseTwoOnMouseEnter();
+              }}
+              onMouseLeave={() => {
+                ellipseTwoOnMouseLeave();
+              }}
+              {...getOverrideProps(overrides, "Ellipse 2")}
+            ></Icon>
             <Icon
               width="14px"
               height="14px"

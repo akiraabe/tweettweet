@@ -15,11 +15,11 @@ export default function CommentCard(props) {
     <Flex
       gap="8px"
       direction="column"
-      width="374px"
+      width="369px"
       justifyContent="center"
       alignItems="center"
       position="relative"
-      padding="3px 31px 3px 26px"
+      padding="16px 18px 17px 26px"
       backgroundColor="rgba(255,255,255,1)"
       {...rest}
       {...getOverrideProps(overrides, "CommentCard")}
@@ -27,7 +27,7 @@ export default function CommentCard(props) {
       <Flex
         gap="11px"
         direction="row"
-        width="fit-content"
+        width="346px"
         alignItems="center"
         shrink="0"
         position="relative"
@@ -35,17 +35,17 @@ export default function CommentCard(props) {
         {...getOverrideProps(overrides, "Body")}
       >
         <Flex
-          gap="11px"
+          gap="21px"
           direction="column"
+          height="118px"
           shrink="0"
-          height="115px"
           position="relative"
-          padding="0px 0px 0px 0px"
+          padding="0px 0px 51px 0px"
           {...getOverrideProps(overrides, "Frame 5")}
         >
           <Image
-            width="80px"
-            height="80px"
+            width="64px"
+            height="64px"
             shrink="0"
             position="relative"
             borderRadius="64px"
@@ -93,23 +93,21 @@ export default function CommentCard(props) {
             ></Text>
           </View>
         </Flex>
-        <Flex
-          gap="0"
-          direction="column"
-          width="247px"
+        <View
+          width="254px"
+          height="141px"
           shrink="0"
-          height="206px"
           position="relative"
-          padding="7px 0px 7px 0px"
+          padding="0px 0px 0px 0px"
           {...getOverrideProps(overrides, "Frame")}
         >
           <Flex
             gap="0"
+            position="absolute"
+            top="8px"
+            left="0px"
             direction="row"
-            width="fit-content"
             alignItems="flex-start"
-            shrink="0"
-            position="relative"
             padding="0px 0px 0px 0px"
             {...getOverrideProps(overrides, "Frame 4")}
           >
@@ -145,7 +143,7 @@ export default function CommentCard(props) {
               textAlign="center"
               display="flex"
               direction="column"
-              justifyContent="center"
+              justifyContent="flex-end"
               letterSpacing="0px"
               width="139px"
               shrink="0"
@@ -167,15 +165,17 @@ export default function CommentCard(props) {
             direction="column"
             justifyContent="flex-start"
             letterSpacing="0.01px"
-            width="246px"
-            shrink="0"
-            position="relative"
+            position="absolute"
+            top="48px"
+            bottom="-8px"
+            left="-0.5px"
+            right="-0.5px"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
             children={post?.content}
             {...getOverrideProps(overrides, "Content")}
           ></Text>
-        </Flex>
+        </View>
       </Flex>
     </Flex>
   );
