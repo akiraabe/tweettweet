@@ -12,8 +12,8 @@ export default function AddButton(props) {
   const { overrides, ...rest } = props;
   return (
     <View
-      width="421px"
-      height="34px"
+      width="374px"
+      height="40px"
       overflow="hidden"
       position="relative"
       padding="0px 0px 0px 0px"
@@ -23,16 +23,16 @@ export default function AddButton(props) {
     >
       <View
         padding="0px 0px 0px 0px"
-        width="29px"
-        height="29px"
+        width="24px"
+        height="24px"
         position="absolute"
-        top="2px"
-        left="9px"
+        top="8px"
+        left="8px"
         {...getOverrideProps(overrides, "AddIcon")}
       >
         <View
-          width="29px"
-          height="29px"
+          width="24px"
+          height="24px"
           position="absolute"
           top="0px"
           left="0px"
@@ -41,40 +41,45 @@ export default function AddButton(props) {
           {...getOverrideProps(overrides, "carbon:add-alt")}
         >
           <Icon
-            width="25.375px"
-            height="25.375px"
-            viewBox={{ minX: 0, minY: 0, width: 25.375, height: 25.375 }}
+            width="19.8623046875px"
+            height="19.86206817626953px"
+            viewBox={{
+              minX: 0,
+              minY: 0,
+              width: 19.8623046875,
+              height: 19.86206817626953,
+            }}
             paths={[
               {
-                d: "M12.6875 1.8125C18.6688 1.8125 23.5625 6.70625 23.5625 12.6875C23.5625 18.6688 18.6688 23.5625 12.6875 23.5625C6.70625 23.5625 1.8125 18.6688 1.8125 12.6875C1.8125 6.70625 6.70625 1.8125 12.6875 1.8125ZM12.6875 0C5.70938 0 0 5.70938 0 12.6875C0 19.6656 5.70938 25.375 12.6875 25.375C19.6656 25.375 25.375 19.6656 25.375 12.6875C25.375 5.70938 19.6656 0 12.6875 0Z",
-                fill: "rgba(0,0,0,1)",
+                d: "M19.8621 9.93103C19.8621 15.4158 15.4158 19.8621 9.93103 19.8621C4.44628 19.8621 0 15.4158 0 9.93103C0 4.44628 4.44628 0 9.93103 0C15.4158 0 19.8621 4.44628 19.8621 9.93103Z",
+                fill: "rgba(4,125,149,1)",
                 fillRule: "nonzero",
               },
             ]}
             position="absolute"
-            top="6.25%"
-            bottom="6.25%"
-            left="6.25%"
-            right="6.25%"
-            {...getOverrideProps(overrides, "Vector33612534")}
+            top="10.34%"
+            bottom="6.9%"
+            left="6.9%"
+            right="10.34%"
+            {...getOverrideProps(overrides, "Ellipse 1")}
           ></Icon>
           <Icon
-            width="14.5px"
-            height="14.5px"
-            viewBox={{ minX: 0, minY: 0, width: 14.5, height: 14.5 }}
+            width="12px"
+            height="12px"
+            viewBox={{ minX: 0, minY: 0, width: 12, height: 12 }}
             paths={[
               {
-                d: "M14.5 6.34375L8.15625 6.34375L8.15625 0L6.34375 0L6.34375 6.34375L0 6.34375L0 8.15625L6.34375 8.15625L6.34375 14.5L8.15625 14.5L8.15625 8.15625L14.5 8.15625L14.5 6.34375Z",
-                fill: "rgba(0,0,0,1)",
+                d: "M12 5.25L6.75 5.25L6.75 0L5.25 0L5.25 5.25L0 5.25L0 6.75L5.25 6.75L5.25 12L6.75 12L6.75 6.75L12 6.75L12 5.25Z",
+                fill: "rgba(255,255,255,1)",
                 fillRule: "nonzero",
               },
             ]}
             position="absolute"
-            top="25%"
-            bottom="25%"
-            left="25%"
-            right="25%"
-            {...getOverrideProps(overrides, "Vector33612535")}
+            top="27.59%"
+            bottom="22.41%"
+            left="24.14%"
+            right="25.86%"
+            {...getOverrideProps(overrides, "Vector")}
           ></Icon>
         </View>
       </View>

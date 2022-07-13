@@ -31,15 +31,11 @@ export const ProfileEditor = ({ cognitoUser }) => {
   useEffect(() => {
     getUser();
   }, []);
-  const variant = useBreakpointValue({
-    small: '375px',
-    medium: '700px',
-  });
+  
   if (!isLoginUser) {
     return (
       <EditProfile
         width='100vw'
-        // variation={variant}
         user={user}
         overrides={{
           Icon: {

@@ -27,7 +27,7 @@ export default function CommentForm(props) {
     <Flex
       gap="0"
       direction="column"
-      width="750px"
+      width="367px"
       height="364px"
       position="relative"
       padding="0px 0px 0px 0px"
@@ -96,7 +96,7 @@ export default function CommentForm(props) {
         ></Text>
       </Flex>
       <Divider
-        width="392px"
+        width="376px"
         height="1px"
         shrink="0"
         position="relative"
@@ -106,28 +106,8 @@ export default function CommentForm(props) {
         {...getOverrideProps(overrides, "Divider")}
       ></Divider>
       <View
-        width="96px"
-        height="96px"
-        shrink="0"
-        position="relative"
-        padding="0px 0px 0px 0px"
-        {...getOverrideProps(overrides, "Profile")}
-      >
-        <Image
-          width="96px"
-          height="96px"
-          position="absolute"
-          top="12px"
-          left="24px"
-          borderRadius="160px"
-          padding="0px 0px 0px 0px"
-          src={user?.profilePic}
-          {...getOverrideProps(overrides, "image")}
-        ></Image>
-      </View>
-      <View
-        width="692px"
-        height="116px"
+        width="308px"
+        height="296px"
         shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
@@ -137,8 +117,8 @@ export default function CommentForm(props) {
           display="flex"
           gap="0"
           position="absolute"
-          bottom="-69px"
-          left="24px"
+          bottom="25px"
+          left="17px"
           direction="row"
           justifyContent="center"
           alignItems="center"
@@ -152,11 +132,11 @@ export default function CommentForm(props) {
           display="flex"
           gap="8px"
           position="absolute"
-          top="13px"
-          left="24px"
-          right="10px"
+          top="123px"
+          left="17px"
+          right="17px"
           direction="column"
-          width="658px"
+          width="274px"
           height="81px"
           justifyContent="space-between"
           padding="0px 0px 0px 0px"
@@ -168,6 +148,17 @@ export default function CommentForm(props) {
           variation="default"
           {...getOverrideProps(overrides, "TextField")}
         ></TextField>
+        <Image
+          width="96px"
+          height="96px"
+          position="absolute"
+          top="18px"
+          left="17px"
+          borderRadius="160px"
+          padding="0px 0px 0px 0px"
+          src={user?.profilePic}
+          {...getOverrideProps(overrides, "image")}
+        ></Image>
       </View>
     </Flex>
   );

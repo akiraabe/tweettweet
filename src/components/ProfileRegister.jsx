@@ -30,6 +30,7 @@ export const ProfileRegister = ({ cognitoUser }) => {
   return (
     <>
       <EditProfile
+        width={'100vw'}
         overrides={{
           Icon: {
             onClick: (e) => {

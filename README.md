@@ -1,3 +1,8 @@
+# 再起動時の手順
+
+amplify configure
+
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

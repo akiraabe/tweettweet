@@ -53,19 +53,19 @@ export default function NavBar(props) {
     <Flex
       gap="14px"
       direction="row"
-      width="429px"
+      width="490px"
       height="40px"
       justifyContent="space-between"
       alignItems="center"
       position="relative"
-      padding="24px 152px 24px 4px"
-      backgroundColor="rgba(219,213,213,1)"
+      padding="24px 100px 24px 4px"
+      backgroundColor="rgba(255,255,255,1)"
       {...rest}
       {...getOverrideProps(overrides, "NavBar")}
     >
       <View
         width="103px"
-        height="27px"
+        height="24px"
         shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
@@ -83,7 +83,7 @@ export default function NavBar(props) {
             },
           ]}
           position="absolute"
-          top="4.5px"
+          top="3px"
           left="1px"
           {...getOverrideProps(overrides, "Star 1")}
         ></Icon>
@@ -97,9 +97,11 @@ export default function NavBar(props) {
           textAlign="left"
           display="flex"
           direction="column"
-          justifyContent="flex-start"
+          justifyContent="center"
+          width="54px"
+          height="24px"
           position="absolute"
-          top="4px"
+          top="0px"
           left="19px"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
@@ -233,15 +235,12 @@ export default function NavBar(props) {
           ></Text>
         </View>
       </View>
-      <Flex
-        gap="10px"
-        direction="row"
-        width="fit-content"
+      <View
+        width="80px"
         height="24px"
-        alignItems="flex-start"
         shrink="0"
         position="relative"
-        padding="4px 38px 4px 38px"
+        padding="0px 0px 0px 0px"
         {...getOverrideProps(overrides, "FrameRight")}
       >
         <Text
@@ -258,8 +257,9 @@ export default function NavBar(props) {
           letterSpacing="0px"
           width="56px"
           height="24px"
-          shrink="0"
-          position="relative"
+          position="absolute"
+          top="0px"
+          left="11px"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="SignOut"
@@ -274,7 +274,7 @@ export default function NavBar(props) {
           }}
           {...getOverrideProps(overrides, "SignOut")}
         ></Text>
-      </Flex>
+      </View>
     </Flex>
   );
 }
