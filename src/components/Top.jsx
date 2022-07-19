@@ -74,7 +74,7 @@ function Top({ cognitoUser }) {
           isSearchable={true}
           isPaginated={true}
           searchPlaceholder='Search...'
-          itemsPerPage={3}
+          itemsPerPage={20}
           direction='column'
           justifyContent='stretch'
           padding='0px'
