@@ -3,9 +3,10 @@ import { DataStore, Predicates, SortDirection } from 'aws-amplify';
 import { Like, Post } from '../models';
 import moment from 'moment';
 import { useEffect, useState } from 'react';
-import { AddButton, CommentCard} from '../ui-components';
+import { CommentCard } from '../ui-components';
 import { Collection, Flex } from '@aws-amplify/ui-react';
 import { useNavigate } from 'react-router-dom';
+import AddButtonArea from './AddButtonArea';
 
 function Top({ cognitoUser }) {
   // console.log(cognitoUser);
@@ -35,12 +36,22 @@ function Top({ cognitoUser }) {
   const getLikes = async (post) => {
     // console.log('getLikes was called');
     const likes = await DataStore.query(Like);
-    // console.log(likes);
-    const like = likes
-      .filter((obj) => obj.likedBy === cognitoUser.username)
-      .filter((obj) => obj.Post.id === post.id);
-    // console.log('like...');
-    // console.log(like[0]);
+    console.log('likes: ', likes);
+    console.log('post.id: ', post.id);
+    console.log('cognitoUser.username: ', cognitoUser.username);
+    const likesFilteredByUsername = likes.filter(
+      (obj) => obj.likedBy === cognitoUser.username
+    );
+    console.log(
+      'likesFilteredByUseranme',
+      likesFilteredByUsername.map((obj) => obj.Post.id)
+    );
+    if (!likesFilteredByUsername) {
+      return null;
+    }
+    const like = likesFilteredByUsername.filter(
+      (obj) => obj.Post.id === post.id
+    );
     return like;
   };
 
@@ -49,21 +60,24 @@ function Top({ cognitoUser }) {
     return moment(date).format('YYYY/MM/DD HH:mm');
   };
   return (
-    <Flex direction='row'> 
+    <Flex direction='row'>
+      
       <div>
-        <AddButton
+        <AddButtonArea onClick={handleClick} />
+        {/* <AddButton
           overrides={{
             AddButton: { onClick: handleClick },
           }}
-        />
+        /> */}
         <Collection
           type='list'
           isSearchable={true}
           isPaginated={true}
           searchPlaceholder='Search...'
-          itemsPerPage={4}
+          itemsPerPage={3}
           direction='column'
           justifyContent='stretch'
+          padding='0px'
           items={posts || []}
         >
           {(post, index) => (
@@ -77,9 +91,10 @@ function Top({ cognitoUser }) {
                 Timestamp: {
                   children: formatDate(post.postedAt),
                 },
-                MyIcon: {
+                Vector: {
                   onClick: async (e) => {
                     e.preventDefault();
+                    console.log('onClick was called');
 
                     // Postをid指定で取得する
                     const postToChange = await DataStore.query(Post, post.id);

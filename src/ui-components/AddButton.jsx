@@ -42,12 +42,12 @@ export default function AddButton(props) {
         >
           <Icon
             width="19.8623046875px"
-            height="19.86206817626953px"
+            height="19.862060546875px"
             viewBox={{
               minX: 0,
               minY: 0,
               width: 19.8623046875,
-              height: 19.86206817626953,
+              height: 19.862060546875,
             }}
             paths={[
               {

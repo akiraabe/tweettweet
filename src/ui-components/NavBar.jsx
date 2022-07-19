@@ -21,6 +21,7 @@ export default function NavBar(props) {
     useStateMutationAction("rgba(0,0,0,1)");
   const [signOutColor, setSignOutColor] =
     useStateMutationAction("rgba(0,0,0,1)");
+  const logoOnClick = useNavigateAction({ type: "url", url: "/posts" });
   const postsOnClick = useNavigateAction({ type: "url", url: "/posts" });
   const postsOnMouseEnter = () => {
     setPostsColor("blue");
@@ -53,12 +54,12 @@ export default function NavBar(props) {
     <Flex
       gap="14px"
       direction="row"
-      width="490px"
+      width="442px"
       height="40px"
       justifyContent="space-between"
       alignItems="center"
       position="relative"
-      padding="24px 100px 24px 4px"
+      padding="24px 100px 24px 8px"
       backgroundColor="rgba(255,255,255,1)"
       {...rest}
       {...getOverrideProps(overrides, "NavBar")}
@@ -69,40 +70,43 @@ export default function NavBar(props) {
         shrink="0"
         position="relative"
         padding="0px 0px 0px 0px"
+        onClick={() => {
+          logoOnClick();
+        }}
         {...getOverrideProps(overrides, "Logo")}
       >
         <Icon
-          width="18px"
-          height="18px"
-          viewBox={{ minX: 0, minY: 0, width: 18, height: 18 }}
+          width="24px"
+          height="24px"
+          viewBox={{ minX: 0, minY: 0, width: 24, height: 24 }}
           paths={[
             {
-              d: "M8.12249 1.60573C8.50171 0.911796 9.49829 0.911796 9.87751 1.60573L10.9602 3.58693C11.1657 3.96292 11.5879 4.16622 12.0099 4.09244L14.234 3.70368C15.0129 3.56751 15.6343 4.34666 15.3282 5.07581L14.4543 7.15757C14.2884 7.55264 14.3927 8.00946 14.7135 8.29344L16.4041 9.78987C16.9963 10.314 16.7745 11.2856 16.0136 11.5009L13.8412 12.1156C13.4289 12.2323 13.1367 12.5986 13.1147 13.0265L12.9989 15.2813C12.9583 16.071 12.0604 16.5034 11.4176 16.0427L9.58254 14.7275C9.23429 14.4779 8.76571 14.4779 8.41746 14.7275L6.58236 16.0427C5.9396 16.5034 5.04172 16.071 5.00113 15.2813L4.88526 13.0265C4.86327 12.5986 4.57112 12.2323 4.15884 12.1156L1.98638 11.5009C1.22546 11.2856 1.0037 10.314 1.59585 9.78987L3.28646 8.29344C3.6073 8.00946 3.71156 7.55264 3.54571 7.15757L2.6718 5.07581C2.36571 4.34666 2.98706 3.56751 3.76604 3.70368L5.99007 4.09244C6.41214 4.16622 6.83431 3.96292 7.03978 3.58693L8.12249 1.60573Z",
+              d: "M11.1225 1.60573C11.5017 0.911796 12.4983 0.911796 12.8775 1.60573L14.7282 4.99222C14.9337 5.3682 15.3558 5.57151 15.7779 5.49773L19.5794 4.83321C20.3584 4.69704 20.9798 5.47619 20.6737 6.20534L19.1799 9.76371C19.0141 10.1588 19.1183 10.6156 19.4392 10.8996L22.3289 13.4574C22.9211 13.9816 22.6993 14.9532 21.9384 15.1685L18.225 16.2192C17.8127 16.3358 17.5206 16.7022 17.4986 17.1301L17.3005 20.9842C17.2599 21.7739 16.362 22.2063 15.7193 21.7457L12.5825 19.4975C12.2343 19.2479 11.7657 19.2479 11.4175 19.4975L8.28071 21.7457C7.63795 22.2063 6.74007 21.7739 6.69948 20.9842L6.50142 17.1301C6.47943 16.7022 6.18728 16.3358 5.775 16.2192L2.0616 15.1685C1.30068 14.9532 1.07892 13.9816 1.67107 13.4574L4.56084 10.8996C4.88167 10.6156 4.98594 10.1588 4.82009 9.76371L3.32631 6.20534C3.02022 5.47619 3.64157 4.69704 4.42055 4.83321L8.2221 5.49773C8.64416 5.57151 9.06633 5.3682 9.2718 4.99222L11.1225 1.60573Z",
               fill: "rgba(20,155,252,1)",
               fillRule: "nonzero",
             },
           ]}
           position="absolute"
-          top="3px"
+          top="0px"
           left="1px"
           {...getOverrideProps(overrides, "Star 1")}
         ></Icon>
         <Text
           fontFamily="Inter"
-          fontSize="14px"
+          fontSize="20px"
           fontWeight="400"
           color="rgba(0,0,0,1)"
           textTransform="capitalize"
-          lineHeight="16.40625px"
+          lineHeight="23.4375px"
           textAlign="left"
           display="flex"
           direction="column"
           justifyContent="center"
-          width="54px"
+          width="89px"
           height="24px"
           position="absolute"
           top="0px"
-          left="19px"
+          left="25px"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="Twetwe"
@@ -131,15 +135,14 @@ export default function NavBar(props) {
             fontSize="14px"
             fontWeight="400"
             color={postsColor}
-            lineHeight="24px"
+            lineHeight="21px"
             textAlign="left"
             display="flex"
             direction="column"
             justifyContent="center"
             textDecoration="underline"
-            letterSpacing="0px"
             position="absolute"
-            top="0px"
+            top="2px"
             left="0px"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
@@ -170,15 +173,14 @@ export default function NavBar(props) {
             fontSize="14px"
             fontWeight="400"
             color={usersColor}
-            lineHeight="24px"
+            lineHeight="21px"
             textAlign="left"
             display="flex"
             direction="column"
             justifyContent="center"
             textDecoration="underline"
-            letterSpacing="0px"
             position="absolute"
-            top="0px"
+            top="2px"
             left="0px"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
@@ -209,15 +211,14 @@ export default function NavBar(props) {
             fontSize="14px"
             fontWeight="400"
             color={profileColor}
-            lineHeight="24px"
+            lineHeight="21px"
             textAlign="left"
             display="flex"
             direction="column"
             justifyContent="center"
             textDecoration="underline"
-            letterSpacing="0px"
             position="absolute"
-            top="0px"
+            top="2px"
             left="0px"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
@@ -248,13 +249,12 @@ export default function NavBar(props) {
           fontSize="14px"
           fontWeight="400"
           color={signOutColor}
-          lineHeight="24px"
+          lineHeight="21px"
           textAlign="left"
           display="flex"
           direction="column"
           justifyContent="center"
           textDecoration="underline"
-          letterSpacing="0px"
           width="56px"
           height="24px"
           position="absolute"

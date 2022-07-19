@@ -5,8 +5,8 @@
  **************************************************************************/
 
 import React from "react";
-import { Post, User } from "../models";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { Post, User } from "../models";
 import { FlexProps } from "@aws-amplify/ui-react";
 export declare type CommentCardProps = React.PropsWithChildren<Partial<FlexProps> & {
     user?: User;
