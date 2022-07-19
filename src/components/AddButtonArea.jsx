@@ -10,7 +10,7 @@ export default function AddButtonArea(props) {
       aria-label='add'
       sx={{
         position: 'fixed',
-        bottom: 40,
+        bottom: 16,
         right: 24,
       }}
       onClick={props.onClick}

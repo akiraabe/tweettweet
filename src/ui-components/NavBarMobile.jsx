@@ -28,7 +28,7 @@ export default function NavBarMobile(props) {
   return (
     <View
       width="370px"
-      height="40px"
+      height="56px"
       overflow="hidden"
       position="relative"
       padding="0px 0px 0px 0px"
@@ -40,7 +40,7 @@ export default function NavBarMobile(props) {
         width="109px"
         height="24.5px"
         position="absolute"
-        top="6px"
+        top="15px"
         left="16px"
         padding="0px 0px 0px 0px"
         {...getOverrideProps(overrides, "Logo")}
@@ -86,7 +86,7 @@ export default function NavBarMobile(props) {
       <Flex
         gap="31px"
         position="absolute"
-        top="8px"
+        top="16px"
         right="91px"
         direction="row"
         width="149px"
@@ -304,7 +304,7 @@ export default function NavBarMobile(props) {
         width="24px"
         height="24px"
         position="absolute"
-        top="8px"
+        top="16px"
         right="20px"
         overflow="hidden"
         padding="0px 0px 0px 0px"

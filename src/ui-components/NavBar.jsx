@@ -52,20 +52,18 @@ export default function NavBar(props) {
   };
   return (
     <Flex
-      gap="14px"
+      gap="32px"
       direction="row"
-      width="442px"
-      height="40px"
-      justifyContent="space-between"
-      alignItems="center"
+      width="456px"
+      alignItems="flex-start"
       position="relative"
-      padding="24px 100px 24px 8px"
+      padding="16px 16px 16px 16px"
       backgroundColor="rgba(255,255,255,1)"
       {...rest}
       {...getOverrideProps(overrides, "NavBar")}
     >
       <View
-        width="103px"
+        width="113px"
         height="24px"
         shrink="0"
         position="relative"
@@ -88,7 +86,7 @@ export default function NavBar(props) {
           ]}
           position="absolute"
           top="0px"
-          left="1px"
+          left="0px"
           {...getOverrideProps(overrides, "Star 1")}
         ></Icon>
         <Text
@@ -102,11 +100,11 @@ export default function NavBar(props) {
           display="flex"
           direction="column"
           justifyContent="center"
-          width="89px"
+          width="80px"
           height="24px"
           position="absolute"
           top="0px"
-          left="25px"
+          left="24px"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="Twetwe"
@@ -114,7 +112,7 @@ export default function NavBar(props) {
         ></Text>
       </View>
       <View
-        width="169px"
+        width="175px"
         height="24px"
         shrink="0"
         position="relative"
@@ -122,7 +120,7 @@ export default function NavBar(props) {
         {...getOverrideProps(overrides, "FrameLeft")}
       >
         <View
-          width="43px"
+          width="37px"
           height="24px"
           position="absolute"
           top="0px"
@@ -141,8 +139,10 @@ export default function NavBar(props) {
             direction="column"
             justifyContent="center"
             textDecoration="underline"
+            width="37px"
+            height="24px"
             position="absolute"
-            top="2px"
+            top="0px"
             left="0px"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
@@ -179,8 +179,10 @@ export default function NavBar(props) {
             direction="column"
             justifyContent="center"
             textDecoration="underline"
+            width="39px"
+            height="24px"
             position="absolute"
-            top="2px"
+            top="0px"
             left="0px"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
@@ -217,8 +219,10 @@ export default function NavBar(props) {
             direction="column"
             justifyContent="center"
             textDecoration="underline"
+            width="43px"
+            height="24px"
             position="absolute"
-            top="2px"
+            top="0px"
             left="0px"
             padding="0px 0px 0px 0px"
             whiteSpace="pre-wrap"
@@ -237,7 +241,7 @@ export default function NavBar(props) {
         </View>
       </View>
       <View
-        width="80px"
+        width="53px"
         height="24px"
         shrink="0"
         position="relative"
@@ -250,16 +254,14 @@ export default function NavBar(props) {
           fontWeight="400"
           color={signOutColor}
           lineHeight="21px"
-          textAlign="left"
+          textAlign="right"
           display="flex"
           direction="column"
           justifyContent="center"
           textDecoration="underline"
-          width="56px"
-          height="24px"
           position="absolute"
-          top="0px"
-          left="11px"
+          top="1.5px"
+          right="0px"
           padding="0px 0px 0px 0px"
           whiteSpace="pre-wrap"
           children="SignOut"
