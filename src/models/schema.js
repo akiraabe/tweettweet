@@ -132,6 +132,13 @@ export const schema = {
                         "targetName": "postUserId"
                     }
                 },
+                "liked": {
+                    "name": "liked",
+                    "isArray": false,
+                    "type": "Boolean",
+                    "isRequired": false,
+                    "attributes": []
+                },
                 "createdAt": {
                     "name": "createdAt",
                     "isArray": false,
@@ -351,5 +358,5 @@ export const schema = {
     },
     "enums": {},
     "nonModels": {},
-    "version": "be99a8bea06f35dd5b03dd2224332cb1"
+    "version": "d8975b7091b8c671e5a5f021208d063d"
 };

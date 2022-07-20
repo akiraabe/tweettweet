@@ -9,7 +9,7 @@ import AddButtonArea from './AddButtonArea';
 import CommentCard2 from '../ui-components/CommentCard2';
 
 function Top({ cognitoUser }) {
-  console.log(cognitoUser);
+  // console.log(cognitoUser);
   const [posts, setPosts] = useState([]);
 
   const navigate = useNavigate();
@@ -20,10 +20,37 @@ function Top({ cognitoUser }) {
   };
 
   const getPosts = async () => {
-    const data = await DataStore.query(Post, Predicates.ALL, {
+    const posts = await DataStore.query(Post, Predicates.ALL, {
       sort: (s) => s.postedAt(SortDirection.DESCENDING),
     });
-    setPosts(data);
+    const newPosts = [];
+
+    const likesAll = await DataStore.query(Like, Predicates.ALL);
+
+    // TODO: 本来はletは使いたくなかったがやむなく。。。
+    let newPost = {};
+    posts.forEach((post) => {
+      newPost = Post.copyOf(post, (updated) => {
+
+        // likesを取得する
+        const likesFilteredByUsername = likesAll.filter(
+          (obj) => obj.likedBy === cognitoUser.username
+        );
+        if (!likesFilteredByUsername) {
+          return null;
+        }
+        const likes = likesFilteredByUsername.filter(
+          (obj) => obj.Post.id === post.id
+        );
+        const nonDeleteLikes = likes.filter((like) => !like.deleted);
+        updated.liked = nonDeleteLikes.length > 0 ? true : false; //post.likes % 2 === 0;
+        if (newPost.id) {
+          newPosts.push(newPost);
+        }
+      })
+    });
+
+    setPosts(newPosts);
     // console.log(data);
   };
 
@@ -34,7 +61,7 @@ function Top({ cognitoUser }) {
 
   // refactoringで切り出したメソッド
   const getLikes = async (post) => {
-    console.log('getLikes was called');
+    // console.log('getLikes was called');
     const likes = await DataStore.query(Like);
     // console.log('likes: ', likes);
     // console.log('post.id: ', post.id)
@@ -61,9 +88,11 @@ function Top({ cognitoUser }) {
   };
 
   // Did I like this post?
-  const isLiked = (post) => {
-    return post.likes % 2 === 0 ? 'rgba(235,47,193,0.5)' : 'rgba(235,47,193,1)';
-  }
+  const isLiked =  (post) => {
+    const notYetLiked = 'rgba(255,255,255,1)';
+    const liked = 'rgba(235,47, 193,1)';
+    return post.liked ?  liked : notYetLiked;
+  };
 
   return (
     <Flex direction='row'>
@@ -114,7 +143,7 @@ function Top({ cognitoUser }) {
                   ],
                   onClick: async (e) => {
                     e.preventDefault();
-                    console.log('onClick was called from Top!');
+                    // console.log('onClick was called from Top!');
                     // setIconColor('rgba(235,47,193,1)');
 
                     // Postをid指定で取得する

@@ -46,6 +46,7 @@ export const Form = ({ cognitoUser }) => {
                   likes: 0,
                   postUserId: user.id,
                   postedAt: moment().toISOString(),
+                  liked: false,
                 })
               );
               // Top画面へ遷移する

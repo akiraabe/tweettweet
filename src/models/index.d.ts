@@ -38,6 +38,7 @@ export declare class Post {
   readonly postedAt?: string | null;
   readonly likes?: number | null;
   readonly User?: User | null;
+  readonly liked?: boolean | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
   readonly postUserId?: string | null;
