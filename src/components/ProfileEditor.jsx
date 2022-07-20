@@ -2,7 +2,6 @@ import { DataStore } from 'aws-amplify';
 import { User } from '../models';
 import { useParams, useNavigate } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { useBreakpointValue } from '@aws-amplify/ui-react';
 import EditProfile from '../ui-components/EditProfile';
 
 export const ProfileEditor = ({ cognitoUser }) => {

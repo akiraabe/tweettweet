@@ -9,6 +9,7 @@ import React from "react";
 import {
   getOverrideProps,
   useNavigateAction,
+  useStateMutationAction,
 } from "@aws-amplify/ui-react/internal";
 import {
   Button,
@@ -22,7 +23,15 @@ import {
 } from "@aws-amplify/ui-react";
 export default function CommentForm(props) {
   const { user, overrides, ...rest } = props;
-  const vectorOnClick = useNavigateAction({ type: "url", url: "" });
+  const [vectorBackgroundColor, setVectorBackgroundColor] =
+    useStateMutationAction(undefined);
+  const vectorOnClick = useNavigateAction({ type: "url", url: "/posts" });
+  const vectorOnMouseEnter = () => {
+    setVectorBackgroundColor("lightgray");
+  };
+  const vectorOnMouseLeave = () => {
+    setVectorBackgroundColor("white");
+  };
   return (
     <Flex
       gap="0"
@@ -71,8 +80,15 @@ export default function CommentForm(props) {
             bottom="20.83%"
             left="20.83%"
             right="20.83%"
+            backgroundColor={vectorBackgroundColor}
             onClick={() => {
               vectorOnClick();
+            }}
+            onMouseEnter={() => {
+              vectorOnMouseEnter();
+            }}
+            onMouseLeave={() => {
+              vectorOnMouseLeave();
             }}
             {...getOverrideProps(overrides, "Vector")}
           ></Icon>

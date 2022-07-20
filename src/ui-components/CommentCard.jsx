@@ -128,7 +128,7 @@ export default function CommentCard(props) {
           direction="column"
           alignItems="center"
           shrink="0"
-          // height="120px" // Hand made height!!!
+          height="120px"
           position="relative"
           padding="0px 0px 16px 0px"
           {...getOverrideProps(overrides, "Frame")}
