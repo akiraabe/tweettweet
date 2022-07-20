@@ -12,10 +12,6 @@ function Top({ cognitoUser }) {
   console.log(cognitoUser);
   const [posts, setPosts] = useState([]);
 
-  // IconColorを設定する
-  const [iconColor, setIconColor] = useState(null); //'rgba(255,255,255,1)');
-  // const [iconColor, setIconColor] = useState('rgba(235,47,193,0.5)');
-
   const navigate = useNavigate();
 
   const handleClick = () => {
@@ -24,7 +20,6 @@ function Top({ cognitoUser }) {
   };
 
   const getPosts = async () => {
-    console.log('iconColor: ', iconColor);
     const data = await DataStore.query(Post, Predicates.ALL, {
       sort: (s) => s.postedAt(SortDirection.DESCENDING),
     });
@@ -64,6 +59,11 @@ function Top({ cognitoUser }) {
   const formatDate = (date) => {
     return moment(date).format('YYYY/MM/DD HH:mm');
   };
+
+  // Did I like this post?
+  const isLiked = (post) => {
+    return post.likes % 2 === 0 ? 'rgba(235,47,193,0.5)' : 'rgba(235,47,193,1)';
+  }
 
   return (
     <Flex direction='row'>
@@ -107,7 +107,7 @@ function Top({ cognitoUser }) {
                     },
                     {
                       d: 'M11.6364 0C10.1091 0 8.76364 0.933333 8 2.4C7.23636 0.933333 5.89091 0 4.36364 0C1.96364 0 0 2.4 0 5.33333C0 10.6222 8 16 8 16C8 16 16 10.6667 16 5.33333C16 2.4 14.0364 0 11.6364 0Z',
-                      fill: 'rgba(235,47,193,0.5)',
+                      fill: isLiked(post),
                       // fill: { iconColor }, //"rgba(235,47,193,1)",
                       fillRule: 'nonzero',
                     },
