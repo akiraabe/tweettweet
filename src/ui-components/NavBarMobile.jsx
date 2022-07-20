@@ -15,6 +15,7 @@ import { Flex, Icon, Text, View } from "@aws-amplify/ui-react";
 import MyIcon from "./MyIcon";
 export default function NavBarMobile(props) {
   const { overrides, ...rest } = props;
+  const logoOnClick = useNavigateAction({ type: "url", url: "/posts" });
   const postsOnClick = useNavigateAction({ type: "url", url: "/posts" });
   const vectorThreeThreeSixOneTwoFiveThreeTwoOnClick = useNavigateAction({
     type: "url",
@@ -43,6 +44,9 @@ export default function NavBarMobile(props) {
         top="15px"
         left="16px"
         padding="0px 0px 0px 0px"
+        onClick={() => {
+          logoOnClick();
+        }}
         {...getOverrideProps(overrides, "Logo")}
       >
         <Icon

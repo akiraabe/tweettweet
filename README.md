@@ -85,3 +85,19 @@ amplify pull
 
 ### ReactRouterのPathParametersの渡し方
 https://reffect.co.jp/react/react-router-6
+
+### 自動生成コンポーネントの手加工
+禁じ手であるが致し方なく以下の手加工を実施している。
+
+```
+126:        <Flex
+127:          gap="8px"
+128:          direction="column"
+129:          alignItems="center"
+130:          shrink="0"
+131:          // height="120px" // Hand made height!!!
+132:          position="relative"
+133:          padding="0px 0px 16px 0px"
+134:          {...getOverrideProps(overrides, "Frame")}
+135:        >
+```
