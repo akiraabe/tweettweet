@@ -9,7 +9,7 @@ import AddButtonArea from './AddButtonArea';
 import CommentCard2 from '../ui-components/CommentCard2';
 
 function Top({ cognitoUser }) {
-  // console.log(cognitoUser);
+  console.log(cognitoUser);
   const [posts, setPosts] = useState([]);
 
   const navigate = useNavigate();

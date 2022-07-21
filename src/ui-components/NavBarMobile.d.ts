@@ -6,8 +6,11 @@
 
 import React from "react";
 import { EscapeHatchProps } from "@aws-amplify/ui-react/internal";
+import { User } from "../models";
 import { ViewProps } from "@aws-amplify/ui-react";
 export declare type NavBarMobileProps = React.PropsWithChildren<Partial<ViewProps> & {
+    user?: User;
+} & {
     overrides?: EscapeHatchProps | undefined | null;
 }>;
 export default function NavBarMobile(props: NavBarMobileProps): React.ReactElement;
