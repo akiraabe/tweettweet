@@ -19,22 +19,20 @@ const App = ({ signOut, user }) => {
   const [userData, setUserData] = useState();
   const callGetUser = async () => {
     const result = await getUser(user);
-    console.log('result', result);
-    setUserData(await getUser(user));
-    console.log('userData : ', userData);
+    setUserData(result);
   };
 
   useEffect(() => {
-   callGetUser(); 
-  }, [])
+    callGetUser();
+  }, []);
 
   return (
     <>
       <MediaQuery query='(max-width: 390px)'>
-        <NavBarMobile width='100vw' />
+        <NavBarMobile width='100vw' user={userData} />
       </MediaQuery>
       <MediaQuery query='(min-width: 391px)'>
-        <NavBar width='100vw' user={userData} />
+        <NavBar width='100vw' />
       </MediaQuery>
       <Router cognitoUser={user} />
     </>

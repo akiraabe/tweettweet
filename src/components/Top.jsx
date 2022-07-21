@@ -9,7 +9,7 @@ import AddButtonArea from './AddButtonArea';
 import CommentCard2 from '../ui-components/CommentCard2';
 
 function Top({ cognitoUser }) {
-  console.log(cognitoUser);
+  // console.log(cognitoUser);
   const [posts, setPosts] = useState([]);
 
   const navigate = useNavigate();
@@ -43,7 +43,7 @@ function Top({ cognitoUser }) {
           (obj) => obj.Post.id === post.id
         );
         const nonDeleteLikes = likes.filter((like) => !like.deleted);
-        updated.liked = nonDeleteLikes.length > 0 ? true : false; //post.likes % 2 === 0;
+        updated.liked = nonDeleteLikes.length > 0 ? true : false;
         if (newPost.id) {
           newPosts.push(newPost);
         }
