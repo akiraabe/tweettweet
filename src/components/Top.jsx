@@ -92,9 +92,6 @@ function Top({ cognitoUser }) {
                     e.preventDefault();
                     // console.log('onClick was called from Top!');
 
-                    // Postをid指定で取得する
-                    const postToChange = await DataStore.query(Post, post.id);
-
                     // post.UserとcognitoUserが同じか判定する。
                     if (post.User.accountName === cognitoUser.username) {
                       // 自分のpostにはLikeできないので、早期リターン
@@ -104,6 +101,9 @@ function Top({ cognitoUser }) {
                     // Likeテーブルを探す
                     const likes = await getLikes(post, cognitoUser);
                     const like = likes[0];
+
+                    // Postをid指定で取得する
+                    const postToChange = await DataStore.query(Post, post.id);
 
                     if (like && !like.deleted) {
                       // count down
