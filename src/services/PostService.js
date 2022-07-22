@@ -6,9 +6,9 @@ import { Post, Like } from '../models';
  */
 export const getPostsWithLiked = async (cognitoUser) => {
   // debug
-  console.log('PostService#getPostsWithLiked was called');
-
+  // console.log('PostService#getPostsWithLiked was called');
   // debug
+
   const posts = await DataStore.query(Post, Predicates.ALL, {
     sort: (s) => s.postedAt(SortDirection.DESCENDING),
   });
@@ -41,7 +41,7 @@ export const getPostsWithLiked = async (cognitoUser) => {
 };
 
 export const getLikes = async (post, cognitoUser) => {
-  console.log('getLikes was called');
+  // console.log('getLikes was called');
   const likes = await DataStore.query(Like);
   const likesFilteredByUsername = likes.filter(
     (obj) => obj.likedBy === cognitoUser.username
@@ -54,7 +54,7 @@ export const getLikes = async (post, cognitoUser) => {
 };
 
 export const updateLikes = async (post, cognitoUser) => {
-  console.log('### updateLikes was called');
+  // console.log('### updateLikes was called');
 
   // Likeテーブルを探す
   const likes = await getLikes(post, cognitoUser);
