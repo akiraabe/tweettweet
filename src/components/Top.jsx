@@ -96,19 +96,16 @@ function Top({ cognitoUser }) {
                     const postToChange = await DataStore.query(Post, post.id);
 
                     // post.UserとcognitoUserが同じか判定する。
-                    // console.log(post.User.accountName);
-                    // console.log(cognitoUser.username);
                     if (post.User.accountName === cognitoUser.username) {
                       // 自分のpostにはLikeできないので、早期リターン
-                      // console.log('same user');
                       return;
                     }
 
                     // Likeテーブルを探す
-                    const like = await getLikes(post, cognitoUser);
-                    const like0 = like[0];
+                    const likes = await getLikes(post, cognitoUser);
+                    const like = likes[0];
 
-                    if (like0 && !like0.deleted) {
+                    if (like && !like.deleted) {
                       // count down
                       await DataStore.save(
                         Post.copyOf(postToChange, (updated) => {
@@ -117,15 +114,13 @@ function Top({ cognitoUser }) {
                       );
                       // Likeテーブル更新
                       await DataStore.save(
-                        Like.copyOf(like0, (updated) => {
+                        Like.copyOf(like, (updated) => {
                           updated.deleted = true;
                         })
                       );
                     } else {
-                      if (like.length === 0) {
+                      if (likes.length === 0) {
                         // Likeテーブルを作る
-                        // console.log('SaveLike');
-                        // console.log(post);
                         await DataStore.save(
                           new Like({
                             Post: post,
@@ -136,12 +131,11 @@ function Top({ cognitoUser }) {
                       } else {
                         // Likeテーブル更新
                         await DataStore.save(
-                          Like.copyOf(like0, (updated) => {
+                          Like.copyOf(like, (updated) => {
                             updated.deleted = false;
                           })
                         );
                       }
-                      // console.log('SaveLike # after');
 
                       // count up
                       await DataStore.save(
