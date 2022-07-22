@@ -1,5 +1,5 @@
 import React from 'react';
-import { DataStore, Predicates, SortDirection } from 'aws-amplify';
+import { DataStore } from 'aws-amplify';
 import { Post, Like } from '../models';
 import { useEffect, useState } from 'react';
 import { Collection, Flex } from '@aws-amplify/ui-react';
@@ -7,6 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import AddButtonArea from './AddButtonArea';
 import CommentCard2 from '../ui-components/CommentCard2';
+import { getPostsWithLiked } from '../services/PostService';
 
 function Top({ cognitoUser }) {
   // console.log(cognitoUser);
@@ -20,37 +21,7 @@ function Top({ cognitoUser }) {
   };
 
   const getPosts = async () => {
-    const posts = await DataStore.query(Post, Predicates.ALL, {
-      sort: (s) => s.postedAt(SortDirection.DESCENDING),
-    });
-    const newPosts = [];
-
-    const likesAll = await DataStore.query(Like, Predicates.ALL);
-
-    // TODO: 本来はletは使いたくなかったがやむなく。。。
-    let newPost = {};
-    posts.forEach((post) => {
-      newPost = Post.copyOf(post, (updated) => {
-
-        // likesを取得する
-        const likesFilteredByUsername = likesAll.filter(
-          (obj) => obj.likedBy === cognitoUser.username
-        );
-        if (!likesFilteredByUsername) {
-          return null;
-        }
-        const likes = likesFilteredByUsername.filter(
-          (obj) => obj.Post.id === post.id
-        );
-        const nonDeleteLikes = likes.filter((like) => !like.deleted);
-        updated.liked = nonDeleteLikes.length > 0 ? true : false;
-        if (newPost.id) {
-          newPosts.push(newPost);
-        }
-      })
-    });
-
-    setPosts(newPosts);
+    setPosts(await getPostsWithLiked(cognitoUser));
     // console.log(data);
   };
 
@@ -88,10 +59,10 @@ function Top({ cognitoUser }) {
   };
 
   // Did I like this post?
-  const isLiked =  (post) => {
+  const isLiked = (post) => {
     const notYetLiked = 'rgba(255,255,255,1)';
     const liked = 'rgba(235,47, 193,1)';
-    return post.liked ?  liked : notYetLiked;
+    return post.liked ? liked : notYetLiked;
   };
 
   return (
