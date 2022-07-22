@@ -39,3 +39,18 @@ export const getPostsWithLiked = async (cognitoUser) => {
   });
   return newPosts;
 };
+
+export const getLikes = async (post, cognitoUser) => {
+  console.log('getLikes was called');
+  const likes = await DataStore.query(Like);
+  const likesFilteredByUsername = likes.filter(
+    (obj) => obj.likedBy === cognitoUser.username
+  );
+  if (!likesFilteredByUsername) {
+    return null;
+  }
+  const like = likesFilteredByUsername.filter(
+    (obj) => obj.Post.id === post.id
+  );
+  return like;
+};

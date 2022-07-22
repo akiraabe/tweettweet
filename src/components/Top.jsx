@@ -7,7 +7,7 @@ import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import AddButtonArea from './AddButtonArea';
 import CommentCard2 from '../ui-components/CommentCard2';
-import { getPostsWithLiked } from '../services/PostService';
+import { getPostsWithLiked, getLikes } from '../services/PostService';
 
 function Top({ cognitoUser }) {
   // console.log(cognitoUser);
@@ -29,29 +29,6 @@ function Top({ cognitoUser }) {
     getPosts();
     // console.log('posts');
   }, []);
-
-  // refactoringで切り出したメソッド
-  const getLikes = async (post) => {
-    // console.log('getLikes was called');
-    const likes = await DataStore.query(Like);
-    // console.log('likes: ', likes);
-    // console.log('post.id: ', post.id)
-    // console.log('cognitoUser.username: ', cognitoUser.username);
-    const likesFilteredByUsername = likes.filter(
-      (obj) => obj.likedBy === cognitoUser.username
-    );
-    // console.log(
-    //   'likesFilteredByUseranme',
-    //   likesFilteredByUsername.map((obj) => obj.Post.id)
-    // );
-    if (!likesFilteredByUsername) {
-      return null;
-    }
-    const like = likesFilteredByUsername.filter(
-      (obj) => obj.Post.id === post.id
-    );
-    return like;
-  };
 
   // postedAtの編集メソッド
   const formatDate = (date) => {
@@ -108,14 +85,12 @@ function Top({ cognitoUser }) {
                     {
                       d: 'M11.6364 0C10.1091 0 8.76364 0.933333 8 2.4C7.23636 0.933333 5.89091 0 4.36364 0C1.96364 0 0 2.4 0 5.33333C0 10.6222 8 16 8 16C8 16 16 10.6667 16 5.33333C16 2.4 14.0364 0 11.6364 0Z',
                       fill: isLiked(post),
-                      // fill: { iconColor }, //"rgba(235,47,193,1)",
                       fillRule: 'nonzero',
                     },
                   ],
                   onClick: async (e) => {
                     e.preventDefault();
                     // console.log('onClick was called from Top!');
-                    // setIconColor('rgba(235,47,193,1)');
 
                     // Postをid指定で取得する
                     const postToChange = await DataStore.query(Post, post.id);
@@ -130,7 +105,7 @@ function Top({ cognitoUser }) {
                     }
 
                     // Likeテーブルを探す
-                    const like = await getLikes(post);
+                    const like = await getLikes(post, cognitoUser);
                     const like0 = like[0];
 
                     if (like0 && !like0.deleted) {
