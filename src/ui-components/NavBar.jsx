@@ -14,7 +14,7 @@ import {
 } from "@aws-amplify/ui-react/internal";
 import { Flex, Image, Text, View } from "@aws-amplify/ui-react";
 export default function NavBar(props) {
-  const { overrides, ...rest } = props;
+  const { user, overrides, ...rest } = props;
   const [postsColor, setPostsColor] = useStateMutationAction("rgba(0,0,0,1)");
   const [usersColor, setUsersColor] = useStateMutationAction("rgba(0,0,0,1)");
   const [profileColor, setProfileColor] =
@@ -102,6 +102,7 @@ export default function NavBar(props) {
           left="12px"
           borderRadius="64px"
           padding="0px 0px 0px 0px"
+          src={user?.profilePic}
           {...getOverrideProps(overrides, "profilePicture")}
         ></Image>
       </View>

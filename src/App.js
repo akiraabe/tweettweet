@@ -32,7 +32,7 @@ const App = ({ signOut, user }) => {
         <NavBarMobile width='100vw' user={userData} />
       </MediaQuery>
       <MediaQuery query='(min-width: 391px)'>
-        <NavBar width='100vw' />
+        <NavBar width='100vw' user={userData}/>
       </MediaQuery>
       <Router cognitoUser={user} />
     </>
