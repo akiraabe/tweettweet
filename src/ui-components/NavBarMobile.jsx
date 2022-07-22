@@ -137,12 +137,12 @@ export default function NavBarMobile(props) {
           >
             <Icon
               width="6.466796875px"
-              height="6.4666748046875px"
+              height="6.466667175292969px"
               viewBox={{
                 minX: 0,
                 minY: 0,
                 width: 6.466796875,
-                height: 6.4666748046875,
+                height: 6.466667175292969,
               }}
               paths={[
                 {
@@ -178,12 +178,12 @@ export default function NavBarMobile(props) {
             ></Icon>
             <Icon
               width="5.466796875px"
-              height="5.933319091796875px"
+              height="5.9333343505859375px"
               viewBox={{
                 minX: 0,
                 minY: 0,
                 width: 5.466796875,
-                height: 5.933319091796875,
+                height: 5.9333343505859375,
               }}
               paths={[
                 {
@@ -201,8 +201,13 @@ export default function NavBarMobile(props) {
             ></Icon>
             <Icon
               width="6px"
-              height="7.13836669921875px"
-              viewBox={{ minX: 0, minY: 0, width: 6, height: 7.13836669921875 }}
+              height="7.138359069824219px"
+              viewBox={{
+                minX: 0,
+                minY: 0,
+                width: 6,
+                height: 7.138359069824219,
+              }}
               paths={[
                 {
                   d: "M6 1.40502C5.73333 1.00502 5.53333 0.538359 5.4 0.00502528L4.86667 0.00502528C3.13333 -0.0616414 1.46667 0.538359 0.2 1.60503L0 1.80502L0 7.13836L1.33333 7.13836L1.33333 2.33836C2.4 1.60502 3.6 1.20503 4.86667 1.27169C5.26667 1.27169 5.66667 1.33836 6 1.40502Z",
@@ -219,12 +224,12 @@ export default function NavBarMobile(props) {
             ></Icon>
             <Icon
               width="5.50390625px"
-              height="5.904022216796875px"
+              height="5.904014587402344px"
               viewBox={{
                 minX: 0,
                 minY: 0,
                 width: 5.50390625,
-                height: 5.904022216796875,
+                height: 5.904014587402344,
               }}
               paths={[
                 {
@@ -242,12 +247,12 @@ export default function NavBarMobile(props) {
             ></Icon>
             <Icon
               width="10.7998046875px"
-              height="8.670257568359375px"
+              height="8.67025375366211px"
               viewBox={{
                 minX: 0,
                 minY: 0,
                 width: 10.7998046875,
-                height: 8.670257568359375,
+                height: 8.67025375366211,
               }}
               paths={[
                 {
