@@ -1,13 +1,11 @@
 import React from 'react';
-import { DataStore } from 'aws-amplify';
-import { Post, Like } from '../models';
 import { useEffect, useState } from 'react';
 import { Collection, Flex } from '@aws-amplify/ui-react';
 import { useNavigate } from 'react-router-dom';
 import moment from 'moment';
 import AddButtonArea from './AddButtonArea';
 import CommentCard2 from '../ui-components/CommentCard2';
-import { getPostsWithLiked, getLikes } from '../services/PostService';
+import { getPostsWithLiked, updateLikes } from '../services/PostService';
 
 function Top({ cognitoUser }) {
   // console.log(cognitoUser);
@@ -98,52 +96,10 @@ function Top({ cognitoUser }) {
                       return;
                     }
 
-                    // Likeテーブルを探す
-                    const likes = await getLikes(post, cognitoUser);
-                    const like = likes[0];
+                    // like情報を更新する
+                    await updateLikes(post, cognitoUser);
 
-                    // Postをid指定で取得する
-                    const postToChange = await DataStore.query(Post, post.id);
-
-                    if (like && !like.deleted) {
-                      // count down
-                      await DataStore.save(
-                        Post.copyOf(postToChange, (updated) => {
-                          updated.likes -= 1;
-                        })
-                      );
-                      // Likeテーブル更新
-                      await DataStore.save(
-                        Like.copyOf(like, (updated) => {
-                          updated.deleted = true;
-                        })
-                      );
-                    } else {
-                      if (likes.length === 0) {
-                        // Likeテーブルを作る
-                        await DataStore.save(
-                          new Like({
-                            Post: post,
-                            deleted: false,
-                            likedBy: cognitoUser.username,
-                          })
-                        );
-                      } else {
-                        // Likeテーブル更新
-                        await DataStore.save(
-                          Like.copyOf(like, (updated) => {
-                            updated.deleted = false;
-                          })
-                        );
-                      }
-
-                      // count up
-                      await DataStore.save(
-                        Post.copyOf(postToChange, (updated) => {
-                          updated.likes += 1;
-                        })
-                      );
-                    }
+                    // postsを再取得する
                     getPosts();
                   },
                 },

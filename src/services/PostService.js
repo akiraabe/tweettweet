@@ -8,7 +8,7 @@ export const getPostsWithLiked = async (cognitoUser) => {
   // debug
   console.log('PostService#getPostsWithLiked was called');
 
-  // debug 
+  // debug
   const posts = await DataStore.query(Post, Predicates.ALL, {
     sort: (s) => s.postedAt(SortDirection.DESCENDING),
   });
@@ -49,8 +49,57 @@ export const getLikes = async (post, cognitoUser) => {
   if (!likesFilteredByUsername) {
     return null;
   }
-  const like = likesFilteredByUsername.filter(
-    (obj) => obj.Post.id === post.id
-  );
+  const like = likesFilteredByUsername.filter((obj) => obj.Post.id === post.id);
   return like;
+};
+
+export const updateLikes = async (post, cognitoUser) => {
+  console.log('### updateLikes was called');
+
+  // Likeテーブルを探す
+  const likes = await getLikes(post, cognitoUser);
+  const like = likes[0];
+
+  // Postをid指定で取得する
+  const postToChange = await DataStore.query(Post, post.id);
+
+  if (like && !like.deleted) {
+    // count down
+    await DataStore.save(
+      Post.copyOf(postToChange, (updated) => {
+        updated.likes -= 1;
+      })
+    );
+    // Likeテーブル更新
+    await DataStore.save(
+      Like.copyOf(like, (updated) => {
+        updated.deleted = true;
+      })
+    );
+  } else {
+    if (likes.length === 0) {
+      // Likeテーブルを作る
+      await DataStore.save(
+        new Like({
+          Post: post,
+          deleted: false,
+          likedBy: cognitoUser.username,
+        })
+      );
+    } else {
+      // Likeテーブル更新
+      await DataStore.save(
+        Like.copyOf(like, (updated) => {
+          updated.deleted = false;
+        })
+      );
+    }
+
+    // count up
+    await DataStore.save(
+      Post.copyOf(postToChange, (updated) => {
+        updated.likes += 1;
+      })
+    );
+  }
 };
