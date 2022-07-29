@@ -53,13 +53,6 @@
       }
     }
   },
-  "storage": {
-    "s3twetwestoragef42642fa": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": []
-    }
-  },
   "hosting": {
     "S3AndCloudFront": {
       "service": "S3AndCloudFront",

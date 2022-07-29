@@ -17,12 +17,6 @@ export type AmplifyDependentResourcesAttributes = {
             "AppClientID": "string"
         }
     },
-    "storage": {
-        "s3twetwestoragef42642fa": {
-            "BucketName": "string",
-            "Region": "string"
-        }
-    },
     "hosting": {
         "S3AndCloudFront": {
             "Region": "string",
